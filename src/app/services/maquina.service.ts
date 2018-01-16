@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import {Maquina} from '../interfaces/maquina';
-import { HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class MaquinaService {
 
   urlServer = 'http://localhost:1337/Maquina';
-  constructor(private _http: HttpClientModule) {
+  constructor(private _http: HttpClient) {
 
   }
 
-  nuevaMaquina(maqui: Maquina) {
-    let cuerpo = JSON.stringify(maqui);
-    let cabecera = new HttpHeaders( {
+  newMaquina(maqui: Maquina) {
+    const cuerpo = JSON.stringify(maqui);
+    const cabecera = new HttpHeaders( {
       'Content-Type': 'application/json'
     });
 
@@ -24,6 +24,28 @@ export class MaquinaService {
         }
       );
   }
+
+  editMaquina(maqui: Maquina, id:number){
+    const cuerpo = JSON.stringify(maqui);
+    const cabecera = new HttpHeaders( {
+      'Content-Type': 'application/json'
+    });
+
+    return this._http.post(this.urlServer + '/' + id, cuerpo ).map(
+      resp => {
+        return resp.json();
+      }
+    );
+  }
+  getAllMaqu() {
+    return this._http.get <Maquina>(this.urlServer).map(
+       res => {
+         console.log(res.json());
+         return res.json();
+       }
+    ) ;
+  }
+
 
 
 

@@ -21,6 +21,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './component/menu/menu.component';
 import { EscritorioComponent } from './page/escritorio/escritorio.component';
+import {MaquinaService} from './services/maquina.service';
 
 
 import {APP_ROUTING} from './app.router';
@@ -74,7 +75,7 @@ const NB_MODULES = [
     NgbModule.forRoot(),
     NbThemeModule.forRoot({ name: 'cosmic' }),
   ],
-  providers: [NbSidebarModule.forRoot().providers, NbMenuModule.forRoot().providers],
+  providers: [NbSidebarModule.forRoot().providers, NbMenuModule.forRoot().providers, MaquinaService],
   bootstrap: [AppComponent ]
 })
 
