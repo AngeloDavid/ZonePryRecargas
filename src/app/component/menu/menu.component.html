@@ -1,0 +1,21 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <div class="logo-containter">
+      <a (click)="toggleSidebar()" href="#" class="navigation"><i class="fa fa-bars"></i></a>
+      <div class="logo" (click)="goToHome()">Panel de <span>Control</span></div>
+    </div>
+    </nb-layout-header>
+
+  <nb-sidebar state="compacted">
+    <nb-menu [items]="_menund"></nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column>
+
+      <div class="contenido_page">
+        <router-outlet></router-outlet>
+      </div>
+
+
+  </nb-layout-column>
+</nb-layout>
