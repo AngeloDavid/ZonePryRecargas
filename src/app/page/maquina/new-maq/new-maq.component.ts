@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewMaqComponent implements OnInit {
 
+  showIntetntos = '';
+  showTime = 'hidden';
   constructor() { }
 
   ngOnInit() {
+  }
+
+  cambiar(Valor) {
+       if (Valor == 1) {
+         this.showIntetntos = 'hidden' ;
+         this.showTime = '';
+       } else {
+         this.showIntetntos = '' ;
+         this.showTime = 'hidden';
+       }
   }
 
 }

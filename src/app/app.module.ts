@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { HttpModule } from '@angular/http';
+import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import {
@@ -18,7 +18,7 @@ import {
   NbUserModule,
   NbCheckboxModule, } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-
+import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './component/menu/menu.component';
 import { EscritorioComponent } from './page/escritorio/escritorio.component';
 
@@ -65,6 +65,8 @@ const NB_MODULES = [
     ListRecComponent
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
     Ng2SmartTableModule,
     NB_MODULES,
     BrowserModule ,
