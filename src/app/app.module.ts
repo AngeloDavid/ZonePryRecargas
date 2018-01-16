@@ -3,8 +3,22 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { NbThemeModule } from '@nebular/theme';
-import { NbSidebarModule, NbLayoutModule, NbSidebarService, NbCardModule, NbMenuModule } from '@nebular/theme';
+
+import {
+
+  NbActionsModule,
+  NbCardModule,
+  NbLayoutModule,
+  NbMenuModule,
+  NbRouteTabsetModule,
+  NbSearchModule,
+  NbSidebarModule,
+  NbTabsetModule,
+  NbThemeModule,
+  NbUserModule,
+  NbCheckboxModule, } from '@nebular/theme';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
 import { MenuComponent } from './component/menu/menu.component';
 import { EscritorioComponent } from './page/escritorio/escritorio.component';
 
@@ -18,6 +32,23 @@ import { NewProComponent } from './page/promociones/new-pro/new-pro.component';
 import { ListProComponent } from './page/promociones/list-pro/list-pro.component';
 import { NewRecComponent } from './page/recargas/new-rec/new-rec.component';
 import { ListRecComponent } from './page/recargas/list-rec/list-rec.component';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+const NB_MODULES = [
+  NbCardModule,
+  NbLayoutModule,
+  NbTabsetModule,
+  NbRouteTabsetModule,
+  NbMenuModule,
+  NbUserModule,
+  NbActionsModule,
+  NbSearchModule,
+  NbSidebarModule,
+  NbCheckboxModule,
+  NgbModule,
+];
 
 @NgModule({
   declarations: [
@@ -34,15 +65,17 @@ import { ListRecComponent } from './page/recargas/list-rec/list-rec.component';
     ListRecComponent
   ],
   imports: [
-    NbCardModule,
-    NbLayoutModule,
-    NbSidebarModule,
-    NbMenuModule ,
+    Ng2SmartTableModule,
+    NB_MODULES,
     BrowserModule ,
     APP_ROUTING,
+    NgbModule.forRoot(),
     NbThemeModule.forRoot({ name: 'cosmic' }),
   ],
-  providers: [NbSidebarService, NbMenuModule.forRoot().providers],
+  providers: [NbSidebarModule.forRoot().providers, NbMenuModule.forRoot().providers],
   bootstrap: [AppComponent ]
 })
+
+
+
 export class AppModule { }

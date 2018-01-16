@@ -1,3 +1,111 @@
-<p>
-  new-rec works!
-</p>
+<div class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Recarga</nb-card-header>
+      <nb-card-body>
+        <div class="input-group has-card-icon">
+          <input type="text" placeholder="Tarjeta" class="form-control"/>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="col-sm-6 input-group has-person-icon">
+            <input type="text" placeholder="Nombre" class="form-control"/>
+          </div>
+          <div class="col-sm-6 input-group">
+            <input type="text" placeholder="Apellido" class="form-control"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Promocion</label>
+          <select class="form-control">
+            <option>3*1</option>
+            <option>2*1</option>
+            <option>viernes loco</option>
+            <option>Lunes Loco</option>
+            <option>martes super loco</option>
+          </select>
+        </div>
+        <div class="row full-name-inputs">
+          <div class=" col-sm-4 input-group ">
+            <input type="number" placeholder="Abono" class="form-control"/>
+          </div>
+          <div class=" col-sm-4 input-group">
+            <input type="text" placeholder="Total" class="form-control"/>
+          </div>
+          <div class=" col-sm-4 form-group">
+            <input type="text" placeholder="Saldo" class="form-control"/>
+          </div>
+        </div>
+        <div class="input-group">
+          <textarea rows="5" placeholder="Observacion" class="form-control"></textarea>
+        </div>
+      </nb-card-body>
+      <nb-card-footer>
+        <button class="btn btn-primary">Guardar</button>
+      </nb-card-footer>
+    </nb-card>
+
+  </div>
+
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp; &nbsp;Informacion de la tarjeta</nb-card-header>
+      <nb-card-body>
+        <div class="input-group ">
+          <input type="text" placeholder="ID" class="form-control"/>
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Saldo" class="form-control">
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="Fecha de vencimiento" class="form-control">
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+
+    <nb-card>
+      <nb-card-header>Informacion del cliente</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-sm-6">
+            <img class="img-fluid rounded">
+          </div>
+          <div class="col-sm-6 ">
+            <input type="text" placeholder="Nombre" class="form-control"/>
+            <input type="text" placeholder="Edad" class="form-control"/>
+            <input type="text" placeholder="Fecha Nacimiento" class="form-control"/>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-body class="demo-rating">
+        <span class="rating-header">Rating</span>
+        <div>
+          <ngb-rating [(rate)]="starRate" max=5>
+            <ng-template let-fill="fill">
+              <span class="star fill" [class.filled]="fill === 100">
+                <i class="ion-android-star" *ngIf="fill === 100"></i>
+                <i class="ion-android-star-outline" *ngIf="fill !== 100"></i>
+              </span>
+            </ng-template>
+          </ngb-rating>
+          <span class="current-rate">{{ starRate }}</span>
+        </div>
+        <div>
+          <ngb-rating [(rate)]="heartRate" max=5>
+            <ng-template let-fill="fill">
+              <span class="star fill" [class.filled]="fill === 100">
+                <i class="ion-ios-heart" *ngIf="fill === 100"></i>
+                <i class="ion-ios-heart-outline" *ngIf="fill !== 100"></i>
+              </span>
+            </ng-template>
+          </ngb-rating>
+          <span class="current-rate">{{ heartRate }}</span>
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+
+  </div>
+</div>
