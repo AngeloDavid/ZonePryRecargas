@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Maquina} from '../../../interfaces/maquina';
 import {MaquinaService} from '../../../services/maquina.service';
-
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-new-maq',
@@ -11,15 +11,31 @@ import {MaquinaService} from '../../../services/maquina.service';
 export class NewMaqComponent implements OnInit {
 
   isnuevo: boolean ;
-  id:number;
+  id:string;
   showIntetntos = '';
   showTime = 'hidden';
   maquinaItem: Maquina ={
     description: '',
-    tarifa: 1,
+    tarifa: 0,
     estado: true
   };
-  constructor( private maqser: MaquinaService ) {
+  constructor( private maqser: MaquinaService,
+               private _router: Router,
+               private _activatedRoute: ActivatedRoute
+  ) {
+    this._activatedRoute.params.subscribe(
+      parametros =>{
+        this.id = parametros['id'];
+        console.log('nuevo');
+        if (this.id != 'nuevo') {
+          this.maqser.getMAquina(this.id).subscribe(
+            resultado =>{
+              this.maquinaItem= resultado;
+            }
+          );
+        }
+      }
+    );
   }
 
   ngOnInit() {

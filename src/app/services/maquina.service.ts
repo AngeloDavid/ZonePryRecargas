@@ -13,7 +13,8 @@ export class MaquinaService {
   newMaquina(maqui: Maquina) {
     const cuerpo = JSON.stringify(maqui);
     const cabecera = new HttpHeaders( {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json' ,
+      'Access-Control-Allow-Origin': '*'
     });
 
     return this._http.post(this.urlServer, cuerpo , { headers: cabecera })
@@ -25,7 +26,7 @@ export class MaquinaService {
       );
   }
 
-  editMaquina(maqui: Maquina, id:number){
+  editMaquina(maqui: Maquina, id:string){
     const cuerpo = JSON.stringify(maqui);
     const cabecera = new HttpHeaders( {
       'Content-Type': 'application/json'
@@ -34,6 +35,17 @@ export class MaquinaService {
     return this._http.post(this.urlServer + '/' + id, cuerpo ).map(
       resp => {
         return resp;
+      }
+    );
+  }
+
+  getMAquina(id: string) {
+    const cabecera = new HttpHeaders( {
+      'Content-Type': 'application/json'
+    });
+    return this._http.get<Maquina>(this.urlServer + '/' + id, { headers: cabecera }).map(
+      resp => {
+        return resp.json();
       }
     );
   }
