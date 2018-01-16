@@ -18,7 +18,7 @@ const APP_ROUTES: Routes = [
   {path: 'home' , component: EscritorioComponent},
   {path: 'recarga/nuevo', component: NewRecComponent},
   {path: 'recarga/Lista', component: ListRecComponent},
-  {path: 'maquina/nuevo', component: NewMaqComponent},
+  {path: 'maquina/:id', component: NewMaqComponent},
   {path: 'maquina/Lista', component: ListProComponent},
   {path: 'promociones/nuevo', component: NewProComponent},
   {path: 'promociones/Lista', component: ListMaqComponent},
