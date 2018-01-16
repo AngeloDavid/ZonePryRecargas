@@ -16,7 +16,7 @@ export class NewMaqComponent implements OnInit {
   showTime = 'hidden';
   maquinaItem: Maquina ={
     description: '',
-    tarifa: 0,
+    tarifa: 1,
     estado: true
   };
   constructor( private maqser: MaquinaService ) {
