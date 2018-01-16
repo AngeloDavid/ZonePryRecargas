@@ -19,8 +19,8 @@ export class MaquinaService {
     return this._http.post(this.urlServer, cuerpo , { headers: cabecera })
       .map(
         res => {
-          console.log(res.json());
-          return res.json();
+          console.log(res);
+          return res;
         }
       );
   }
@@ -33,15 +33,15 @@ export class MaquinaService {
 
     return this._http.post(this.urlServer + '/' + id, cuerpo ).map(
       resp => {
-        return resp.json();
+        return resp;
       }
     );
   }
   getAllMaqu() {
     return this._http.get <Maquina>(this.urlServer).map(
        res => {
-         console.log(res.json());
-         return res.json();
+         console.log(res);
+         return res;
        }
     ) ;
   }
