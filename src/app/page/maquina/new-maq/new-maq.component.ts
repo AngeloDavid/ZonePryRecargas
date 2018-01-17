@@ -53,7 +53,8 @@ export class NewMaqComponent implements OnInit {
         this.maqser.newMaquina(this.maquinaItem).subscribe(
           resultado => {
             console.log('registrado', resultado);
-            this._router.navigate(['/maquina', resultado.id]);
+            // this._router.navigate(['/maquina', resultado.id]);
+            this._router.navigate(['/maquinas']);
           }
         );
       } else {
