@@ -10,11 +10,10 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class NewMaqComponent implements OnInit {
 
-  isnuevo: boolean ;
-  id:string;
+  id: string;
   showIntetntos = '';
   showTime = 'hidden';
-  maquinaItem: Maquina ={
+  maquinaItem: Maquina = {
     description: '',
     tarifa: 0,
     estado: true
@@ -24,13 +23,12 @@ export class NewMaqComponent implements OnInit {
                private _activatedRoute: ActivatedRoute
   ) {
     this._activatedRoute.params.subscribe(
-      parametros =>{
+      parametros => {
         this.id = parametros['id'];
-        console.log('nuevo');
         if (this.id != 'nuevo') {
-          this.maqser.getMAquina(this.id).subscribe(
-            resultado =>{
-              this.maquinaItem= resultado;
+          this.maqser.getMaquina(this.id).subscribe(
+            resultado => {
+              this.maquinaItem = resultado;
             }
           );
         }
@@ -51,19 +49,24 @@ export class NewMaqComponent implements OnInit {
        }
   }
   guardar() {
-      if (this.isnuevo) {
+      if (this.id == 'nuevo') {
         this.maqser.newMaquina(this.maquinaItem).subscribe(
           resultado => {
-            console.log('registrado');
+            console.log('registrado', resultado);
+            this._router.navigate(['/maquina', resultado.id]);
           }
         );
       } else {
-        this.maqser.editMaquina(this.maquinaItem,this.id).subscribe(
-          resultado =>{
+        this.maqser.editMaquina(this.maquinaItem, this.id).subscribe(
+          resultado => {
             console.log('editado');
+            this._router.navigate(['/maquinas']);
           }
         );
       }
   }
 
+  regresar(){
+    this._router.navigate(['/maquinas']);
+  }
 }

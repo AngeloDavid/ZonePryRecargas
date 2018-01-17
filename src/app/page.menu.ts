@@ -34,7 +34,7 @@ export const menu: NbMenuItem [] = [
       },
       {
         title: 'Lista de máquinas',
-        link: 'maquina/Lista'
+        link: 'maquinas'
       }
     ]
   },

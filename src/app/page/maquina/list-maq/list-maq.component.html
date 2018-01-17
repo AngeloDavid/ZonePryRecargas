@@ -1,3 +1,9 @@
-<p>
-  list-maq works!
-</p>
+<nb-card>
+  <nb-card-header>
+    Lista de máquinas
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="datos" (edit)="editarMaq($event)" (create)="addMaqui()" ></ng2-smart-table>
+  </nb-card-body>
+</nb-card>

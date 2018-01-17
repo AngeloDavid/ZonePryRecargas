@@ -19,9 +19,9 @@ const APP_ROUTES: Routes = [
   {path: 'recarga/nuevo', component: NewRecComponent},
   {path: 'recarga/Lista', component: ListRecComponent},
   {path: 'maquina/:id', component: NewMaqComponent},
-  {path: 'maquina/Lista', component: ListProComponent},
+  {path: 'maquinas', component: ListMaqComponent},
   {path: 'promociones/nuevo', component: NewProComponent},
-  {path: 'promociones/Lista', component: ListMaqComponent},
+  {path: 'promociones/Lista', component: ListProComponent },
   {path: 'cliente/nuevo', component: NewCliComponent},
   {path: 'cliente/Lista', component: ListCliComponent},
   {path: '**' , pathMatch: 'full', redirectTo: 'home'}
