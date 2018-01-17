@@ -1,45 +1,33 @@
-<nb-card>
-<nb-card-header>Nuevo Cliente</nb-card-header>
-  <nb-card-body>
-    <form (ngSubmit)="guardar()"  >
-    	<div class="row">
-    		<div class="col-md-1"></div>
-    		<div class="form-group col-md-4">
-		      <label for="cedula" class="col-sm-2 col-form-label"  >Cédula</label>
-		      <div class="col-sm-10">
-		        <input type="text"  class="form-control" id="cedula" value="" name="cedula" [(ngModel)]="cliente.cedula">
-		      </div>
-		    </div>
-		    <div class="col-md-2"></div>
-		    <div class="form-group col-md-4">
-		      <label for="birthday" class="col-sm-6 col-form-label" >Fecha Nacimiento</label>
-		      <div class="col-sm-10 ">
-		        <input type="date" class="form-control" id="birthday" name="birthday" [(ngModel)]="cliente.birthday">
-		      </div>
-		    </div>		
-		</div>
-		<div class="row">
-		    <div class="form-group col-md-6">
-		      <label for="nombre" class="col-sm-2 col-form-label" >Nombres</label>
-		      <div class="col-sm-10 ">
-		        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="cliente.nombres">
-		      </div>
-		    </div>		
-		    <div class="form-group col-md-6">
-		      <label for="apellidos" class="col-sm-2 col-form-label" >Apellidos</label>
-		      <div class="col-sm-10 ">
-		        <input type="text" class="form-control" id="apellidos" name="apellidos" [(ngModel)]="cliente.apellidos">
-		      </div>
-		    </div>
-    	</div>
-    
-    
-    
-    <div class="form-group row">
-      <div class="col-sm-6"> <button class="btn btn-primary" >Guardar </button></div>
+<div class="row">
+  <div class="col-md-6 col-12">
+    <nb-card>
+      <nb-card-header>Nuevo Cliente</nb-card-header>
+      <nb-card-body>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Cédula</label>
+          <div class="col-sm-10">
+            <input type="text" placeholder="cédula" class="form-control" maxlength="15"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Nombre del Usuario</label>
+          <div class="col-sm-5">
+            <input type="text" placeholder="Nombre" class="form-control" maxlength="50"/>
+          </div>
+          <div class="col-sm-5">
+            <input type="text" placeholder="Apellido" class="form-control" maxlength="50"/>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-md-6 col-12">
+    <nb-card>
+      <nb-card-header><i class="fa fa-credit-card"></i> Informacion de la tarjeta</nb-card-header>
+      <nb-card-body>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
 
-    </div>
-  </form>
-  </nb-card-body>
-</nb-card>
 

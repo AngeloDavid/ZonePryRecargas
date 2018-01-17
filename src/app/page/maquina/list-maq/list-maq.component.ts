@@ -57,11 +57,7 @@ export class ListMaqComponent implements OnInit {
   constructor(private maqser: MaquinaService,
               private _router: Router,
               private _activatedRoute: ActivatedRoute) {
-    this.maqser.getAllMaqu().subscribe(
-      resultado => {
-         this.datos = resultado;
-      }
-    );
+    this.getAllMAqui();
   }
 
   ngOnInit() {
@@ -77,4 +73,20 @@ export class ListMaqComponent implements OnInit {
      this._router.navigate(['/maquina/nuevo']);
   }
 
+  deleteMaqui(event): void {
+    console.log(event.data);
+    this.maqser.deleteMaqu(event.data.estado, event.data.id).subscribe(
+      resultado => {
+        this.getAllMAqui();
+      }
+    );
+  }
+
+  getAllMAqui(): void{
+    this.maqser.getAllMaqu().subscribe(
+      resultado => {
+        this.datos = resultado;
+      }
+    );
+  }
 }

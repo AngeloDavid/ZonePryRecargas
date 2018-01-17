@@ -22,6 +22,7 @@ export class MaquinaService {
 
   editMaquina(maqui: Maquina, id: string) {
     const cuerpo = JSON.stringify(maqui);
+    console.log(cuerpo);
     return this._http.post(this.urlServer + '/' + id, cuerpo );
 
   }
@@ -32,6 +33,13 @@ export class MaquinaService {
 
   getAllMaqu() {
     return this._http.get <Maquina>(this.urlServer) ;
+  }
+  deleteMaqu(estado: boolean, id: string) {
+    console.log(estado);
+    const deletema = !estado;
+    const datos = JSON.stringify({ "estado" :  deletema  });
+    console.log(datos);
+    return this._http.post(this.urlServer + '/' + id, datos );
   }
 
 
