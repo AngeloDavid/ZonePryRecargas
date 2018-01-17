@@ -1,3 +1,9 @@
-<p>
-  list-pro works!
-</p>
+<nb-card>
+  <nb-card-header>
+    Lista de Promociones
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" (create)="addMaqui()"></ng2-smart-table>
+  </nb-card-body>
+</nb-card>

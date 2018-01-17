@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-list-rec',
@@ -24,27 +25,32 @@ export class ListRecComponent implements OnInit {
       confirmDelete: true,
     },
     actions: {
-      columnTitle: 'Acciones',
-      add: false
+      columnTitle: 'Acciones'
     },
+    mode: 'external',
+    noDataMessage: 'Sin clientes encontrados',
     columns: {
       id: {
         title: 'ID'
       },
       name: {
-        title: 'Full Name'
+        title: 'Tarjetas'
       },
       username: {
-        title: 'User Name'
+        title: 'Cliente'
       },
       email: {
-        title: 'Email'
+        title: 'Cantidad'
       }
     }
   };
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
+  }
+
+  addMaqui(): void {
+    this._router.navigate(['/recarga/nuevo']);
   }
 
 }

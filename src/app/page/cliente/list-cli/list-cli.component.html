@@ -1,3 +1,9 @@
-<p>
-  list-cli works!
-</p>
+<nb-card>
+  <nb-card-header>
+    Lista de clientes
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" (create)="addMaqui()"></ng2-smart-table>
+  </nb-card-body>
+</nb-card>
