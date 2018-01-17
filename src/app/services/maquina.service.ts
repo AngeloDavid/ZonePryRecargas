@@ -22,8 +22,8 @@ export class MaquinaService {
 
   editMaquina(maqui: Maquina, id: string) {
     const cuerpo = JSON.stringify(maqui);
-
     return this._http.post(this.urlServer + '/' + id, cuerpo );
+
   }
 
   getMaquina(id: string) {
