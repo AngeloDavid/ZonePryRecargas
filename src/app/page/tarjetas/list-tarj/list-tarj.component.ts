@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {ClienteService} from '../../../services/cliente.service';
+import {TargetaService} from '../../../services/targeta.service';
 @Component({
-  selector: 'app-list-cli',
-  templateUrl: './list-cli.component.html',
-  styleUrls: ['./list-cli.component.css']
+  selector: 'app-list-tarj',
+  templateUrl: './list-tarj.component.html',
+  styleUrls: ['./list-tarj.component.css']
 })
-export class ListCliComponent implements OnInit {
+export class ListTarjComponent implements OnInit {
 
   settings = {
     add: {
@@ -30,68 +30,68 @@ export class ListCliComponent implements OnInit {
     mode: 'external',
     noDataMessage: 'Sin clientes encontrados',
     columns: {
-      cedula: {
-        title: 'Cédula'
+      description: {
+        title: 'ID-Card'
       },
-      nombre: {
-        title: 'Nombre '
+      creditos: {
+        title: 'creditos '
       },
-      apellido: {
-        title: 'Apellido'
+      saldo: {
+        title: 'saldo'
       },
-      fecha_nacimiento: {
-        title: 'Fecha Nacimiento'
+      fecha_vencimiento: {
+        title: 'Fechade Vencimiento'
       },
-      telefono: {
-        title: 'Teléfono'
+      fecha_Activacion: {
+        title: 'Fecha de activacion'
       },
-      email: {
-        title: 'E-mail'
+      tipo: {
+        title: 'Tipo de tarjeta'
       },
-      direccion: {
-        title: 'Dirección'
+      islimitado: {
+        title: 'Limite de saldo'
       },
       estado: {
         title: 'Estado'
       },
-      tarjetas: {
-        title: 'Tarjetas'
+      userFk: {
+        title: 'Usuario'
       }
     }
   };
   datos: any;
 
-  constructor(private maqser: ClienteService,
+  constructor(private maqser: TargetaService,
               private _router: Router) {
-    this.getAllMAqui();
+    this.getAllTarjetas();
   }
 
   ngOnInit() {
   }
-
   addMaqui(): void {
-    this._router.navigate(['/cliente/nuevo']);
+    this._router.navigate(['/tarjeta/nuevo']);
   }
 
   editarMaq(event): void {
     console.log('editar');
     console.log(event.data.id);
-    this._router.navigate(['/cliente', event.data.id]);
+    this._router.navigate(['/tarjeta', event.data.id]);
   }
   deleteMaqui(event): void {
     console.log(event.data);
-    this.maqser.deleteCli(event.data.estado, event.data.id).subscribe(
+    this.maqser.deleteTar(event.data.estado, event.data.id).subscribe(
       resultado => {
-        this.getAllMAqui();
+        this.getAllTarjetas();
       }
     );
   }
 
-  getAllMAqui(): void {
-    this.maqser.getAllCli().subscribe(
+  getAllTarjetas(): void {
+    this.maqser.getAllTar().subscribe(
       resultado => {
         this.datos = resultado;
       }
     );
   }
+
 }

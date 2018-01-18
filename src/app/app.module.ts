@@ -21,7 +21,11 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './component/menu/menu.component';
 import { EscritorioComponent } from './page/escritorio/escritorio.component';
+
 import {MaquinaService} from './services/maquina.service';
+import {ClienteService} from './services/cliente.service';
+import {TargetaService} from './services/targeta.service';
+import {HorarioService} from './services/horario.service';
 
 
 import {APP_ROUTING} from './app.router';
@@ -35,6 +39,9 @@ import { NewRecComponent } from './page/recargas/new-rec/new-rec.component';
 import { ListRecComponent } from './page/recargas/list-rec/list-rec.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HorariosComponent } from './page/promociones/horarios/horarios.component';
+import { NewTarjComponent } from './page/tarjetas/new-tarj/new-tarj.component';
+import { ListTarjComponent } from './page/tarjetas/list-tarj/list-tarj.component';
 
 
 const NB_MODULES = [
@@ -63,7 +70,10 @@ const NB_MODULES = [
     NewProComponent,
     ListProComponent,
     NewRecComponent,
-    ListRecComponent
+    ListRecComponent,
+    HorariosComponent,
+    NewTarjComponent,
+    ListTarjComponent
   ],
   imports: [
     HttpClientModule,
@@ -75,7 +85,7 @@ const NB_MODULES = [
     NgbModule.forRoot(),
     NbThemeModule.forRoot({ name: 'cosmic' }),
   ],
-  providers: [NbSidebarModule.forRoot().providers, NbMenuModule.forRoot().providers, MaquinaService],
+  providers: [NbSidebarModule.forRoot().providers, NbMenuModule.forRoot().providers, MaquinaService, ClienteService, HorarioService, TargetaService],
   bootstrap: [AppComponent ]
 })
 

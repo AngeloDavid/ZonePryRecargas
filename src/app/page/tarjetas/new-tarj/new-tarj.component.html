@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-6 col-12">
+    <nb-card>
+      <nb-card-header><i class="fa fa-credit-card"></i> {{id=='nuevo'?'Nueva Tarjeta':'Editar Tarjeta'}}</nb-card-header>
+      <nb-card-body>
+
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">ID-Card</label>
+          <div class="col-sm-10">
+            <input type="text" placeholder="ssxaw1212323cds" class="form-control" name="description" [(ngModel)]="targetaItem.description" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Cliente</label>
+          <div class="col-sm-3 d-flex justify-content-center align-content-center">
+          <label class="form-control-label">{{targetaItem.userFk.nombre+' '+targetaItem.userFk.apellido}}</label>
+          </div>
+          <div class="col-sm-7">
+            <select class="form-control" name="userFk"
+                    [(ngModel)]="targetaItem.userFk">
+              <option *ngFor="let cli of listCliente" [ngValue]="cli">{{cli.cedula}} </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Tipo de Tarjeta</label>
+          <div class="col-sm-10">
+            <select class="form-control" name="tipo" [(ngModel)]="targetaItem.tipo">
+              <option value="VIP">VIP</option>
+              <option value="normal">Normal</option>
+              <option value="regalo">Regalo</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Cantidad</label>
+          <div class="col-sm-5">
+            <label  class="col-sm-2 col-form-label">Saldo</label>
+            <input type="number" placeholder="0.00" class="form-control" name="saldo" [(ngModel)]="targetaItem.saldo" />
+          </div>
+          <div class="col-sm-5">
+            <label  class="col-sm-2 col-form-label">Credito</label>
+            <input type="number" placeholder="0.00" class="form-control" name="creditoa" [(ngModel)]="targetaItem.creditos" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label">Fecha</label>
+          <div class="col-sm-5">
+            <label  class="col-sm-2 col-form-label">Activacion</label>
+            <input type="date" placeholder="0.00" class="form-control" name="fecha_Activacion" [(ngModel)]="targetaItem.fecha_Activacion" />
+          </div>
+          <div class="col-sm-5">
+            <label  class="col-sm-2 col-form-label">Vencimiento</label>
+            <input type="date" placeholder="0.00" class="form-control" name="fecha_vencimiento" [(ngModel)]="targetaItem.fecha_vencimiento" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-sm-2 col-form-label"></label>
+          <div class="col-sm-10">
+            <nb-checkbox name="islimitado" [(ngModel)]="targetaItem.islimitado">Con limite de saldo</nb-checkbox>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2"></label>
+          <div class="col-sm-10">
+            <button class="btn btn-primary" (click)="guardar()">{{id=='nuevo'?'Guardar':'Editar'}}</button>
+          </div>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+
+
+  </div >
+</div>

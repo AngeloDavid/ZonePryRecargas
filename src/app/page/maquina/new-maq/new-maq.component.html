@@ -5,7 +5,7 @@
     <div class="form-group row">
       <label for="descp" class="col-sm-2 col-form-label"  >Descripción</label>
       <div class="col-sm-10">
-        <input type="text"  class="form-control" id="descp" value="" name="description" [(ngModel)]="maquinaItem.description">
+        <input type="text" required  class="form-control" id="descp" value="" name="description" [(ngModel)]="maquinaItem.description">
       </div>
     </div>
     <div class="form-group row">
@@ -16,24 +16,18 @@
     </div>
 
     <div class="form-group row">
-      <label for="tipoCob" class="col-sm-2 col-form-label">Medida de cobro</label>
+      <label for="tipoCob" class="col-sm-2 col-form-label">Tipo de cobro</label>
       <div class="col-sm-10">
-        <select id="tipoCob" #selector class="form-control" (change)="cambiar(selector.value)" >
-          <option value=0>Números de Intentos</option>
-          <option value=1>Tiempo de juego</option>
+        <select id="tipoCob" #selector class="form-control" name="tipo" [(ngModel)]="maquinaItem.tipo" >
+          <option value="credito">Por Credito</option>
+          <option value="saldo">Por Saldo</option>
         </select>
       </div>
     </div>
-    <div #intentos class="form-group row {{showIntetntos}}">
+    <div #intentos class="form-group row">
       <label for="tipoCob" class="col-sm-2 col-form-label">Número de intentos</label>
       <div class="col-sm-10">
         <input type="number" class="form-control" name="intentos" [(ngModel)]="maquinaItem.intentos"  >
-      </div>
-    </div>
-    <div #tiempo class="form-group row {{showTime}}">
-      <label for="tipoCob" class="col-sm-2 col-form-label">Tiempo de Juego</label>
-      <div class="col-sm-10">
-        <input type="number" class="form-control" name="tiempo" [(ngModel)]="maquinaItem.tiempo" >
       </div>
     </div>
     <div class="form-group row">

@@ -44,8 +44,8 @@ export class ListMaqComponent implements OnInit {
       intentos: {
         title: '# Intentos'
       },
-      tiempo: {
-        title: 'tiempo'
+      tipo: {
+        title: 'Tipo de cobro'
       },
       estado: {
         title: 'Estado'

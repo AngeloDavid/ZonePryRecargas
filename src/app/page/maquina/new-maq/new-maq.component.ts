@@ -11,11 +11,10 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class NewMaqComponent implements OnInit {
 
   id: string;
-  showIntetntos = '';
-  showTime = 'hidden';
   maquinaItem: Maquina = {
     description: '',
     tarifa: 0,
+    tipo: 'saldo',
     estado: true
   };
   constructor( private maqser: MaquinaService,
@@ -39,15 +38,7 @@ export class NewMaqComponent implements OnInit {
   ngOnInit() {
   }
 
-  cambiar(Valor) {
-       if (Valor == 1) {
-         this.showIntetntos = 'hidden' ;
-         this.showTime = '';
-       } else {
-         this.showIntetntos = '' ;
-         this.showTime = 'hidden';
-       }
-  }
+
   guardar() {
       if (this.id == 'nuevo') {
         this.maqser.newMaquina(this.maquinaItem).subscribe(
@@ -67,7 +58,7 @@ export class NewMaqComponent implements OnInit {
       }
   }
 
-  regresar(){
+  regresar() {
     this._router.navigate(['/maquinas']);
   }
 }

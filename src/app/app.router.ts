@@ -10,8 +10,11 @@ import { ListMaqComponent } from './page/maquina/list-maq/list-maq.component';
 import { NewMaqComponent } from './page/maquina/new-maq/new-maq.component';
 import { NewProComponent } from './page/promociones/new-pro/new-pro.component';
 import { ListProComponent } from './page/promociones/list-pro/list-pro.component';
+import { HorariosComponent } from './page/promociones/horarios/horarios.component';
 import { NewRecComponent } from './page/recargas/new-rec/new-rec.component';
 import { ListRecComponent } from './page/recargas/list-rec/list-rec.component';
+import  {ListTarjComponent} from  './page/tarjetas/list-tarj/list-tarj.component';
+import {NewTarjComponent} from  './page/tarjetas/new-tarj/new-tarj.component';
 
 
 const APP_ROUTES: Routes = [
@@ -22,8 +25,11 @@ const APP_ROUTES: Routes = [
   {path: 'maquinas', component: ListMaqComponent},
   {path: 'promociones/nuevo', component: NewProComponent},
   {path: 'promociones/Lista', component: ListProComponent },
-  {path: 'cliente/nuevo', component: NewCliComponent},
-  {path: 'cliente/Lista', component: ListCliComponent},
+  {path: 'promociones/Horarios', component: HorariosComponent },
+  {path: 'cliente/:id', component: NewCliComponent},
+  {path: 'clientes', component: ListCliComponent},
+  {path: 'tarjeta/:id', component: NewTarjComponent},
+  {path: 'tarjetas', component: ListTarjComponent},
   {path: '**' , pathMatch: 'full', redirectTo: 'home'}
 ];
 

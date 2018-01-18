@@ -11,7 +11,7 @@ export const menu: NbMenuItem [] = [
     home: true,
   },
   {
-    title: 'Recarga',
+    title: 'Recargar',
     icon: 'fa fa-pencil-square-o' ,
     children: [
       {
@@ -50,6 +50,10 @@ export const menu: NbMenuItem [] = [
       {
         title: 'Lista de Promociones',
         link: 'promociones/Lista'
+      },
+      {
+        title: 'Horarios',
+        link: 'promociones/Horarios'
       }
     ]
   },
@@ -73,7 +77,21 @@ export const menu: NbMenuItem [] = [
       },
       {
         title: 'Lista de Clientes',
-        link: 'cliente/Lista'
+        link: 'clientes'
       }
-    ]
+    ],
+  },
+  {
+    title: 'Tarjetas',
+    icon: 'fa fa-credit-card' ,
+    children: [
+      {
+        title: 'NuevoTarjeta',
+        link: 'tarjeta/nuevo'
+      },
+      {
+        title: 'Lista de Tarjetas',
+        link: 'tarjetas'
+      }
+    ],
   }];

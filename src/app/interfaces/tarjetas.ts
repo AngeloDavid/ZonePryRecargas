@@ -3,8 +3,9 @@ import {Cliente} from './cliente';
 
 export interface Tarjetas {
   description: string;
+  creditos:number;
   saldo: number;
-  fecha_vencimiento: any;
+  fecha_vencimiento?: any;
   fecha_Activacion: any;
   fecha_UltimoMovimiento?: any;
   tipo: string;
