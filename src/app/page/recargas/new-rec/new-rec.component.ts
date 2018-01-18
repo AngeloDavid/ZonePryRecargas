@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PromocionService} from '../../../services/promocion.service';
+
 
 @Component({
   selector: 'app-new-rec',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-rec.component.scss']
 })
 export class NewRecComponent implements OnInit {
-  starRate = 2;
-  heartRate = 4;
+  Promociones:any;
 
-  constructor() { }
+
+  constructor(private promList: PromocionService) {
+    this.promList.getAllPromocion().subscribe(
+      resp => {
+        this.Promociones =resp;
+      }
+    );
+  }
 
   ngOnInit() {
   }

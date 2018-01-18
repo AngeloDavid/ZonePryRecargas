@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-
+import {Router} from '@angular/router';
+import {PromocionService} from '../../../services/promocion.service';
 @Component({
   selector: 'app-list-pro',
   templateUrl: './list-pro.component.html',
@@ -33,37 +33,68 @@ export class ListProComponent implements OnInit {
       id: {
         title: 'ID'
       },
-      name: {
+      titulo: {
         title: 'Titulo '
       },
-      apellido: {
+      decripcion: {
         title: 'Descripcion'
       },
-      fecha_nacimiento: {
+      cantidad: {
         title: 'Cantidad'
       },
-      telefono: {
+      operacion: {
         title: 'Operacion'
       },
-      email: {
+      createdAt: {
         title: 'Fecha de Creación'
       },
-      direccion: {
+      fecha_vencimiento: {
         title: 'Fecha de Vencimiento'
       },
-      Tarjeta: {
+      fecha_Activacion: {
         title: 'Fecha de Activación'
+      },
+      estado: {
+        title: 'Estado'
+      },
+      horarioFk: {
+        title: 'Horario'
       }
     }
   };
-  constructor(private _router: Router) { }
+  datos: any;
+  constructor(private maqser: PromocionService,
+              private _router: Router) {
+    this.getAllPromociones();
+  }
 
   ngOnInit() {
   }
 
   addMaqui(): void {
-    this._router.navigate(['/promociones/nuevo']);
+    this._router.navigate(['/promocion/nuevo']);
   }
 
+  editarMaq(event): void {
+    console.log('editar');
+    console.log(event.data.id);
+    this._router.navigate(['/promocion', event.data.id]);
+  }
+  deleteMaqui(event): void {
+    console.log(event.data);
+    this.maqser.deletePromocion(event.data.estado, event.data.id).subscribe(
+      resultado => {
+        this.getAllPromociones();
+      }
+    );
+  }
+
+  getAllPromociones(): void {
+    this.maqser.getAllPromocion().subscribe(
+      resultado => {
+        this.datos = resultado;
+      }
+    );
+  }
 
 }

@@ -1,33 +1,33 @@
 <div class="row">
-  <div class="col-md-6 col-12">
+  <div class="col-md-9 col-12">
     <nb-card>
       <nb-card-header>Nueva Promocion</nb-card-header>
       <nb-card-body>
         <div class="form-group row">
-          <label  class="col-sm-2 col-form-label">Nombre</label>
+          <label  class="col-sm-2 col-form-label">Titulo</label>
           <div class="col-sm-10">
-            <input type="text" placeholder="Promoción Vacacional" class="form-control" maxlength="15"/>
+            <input type="text" placeholder="Promoción Vacacional" class="form-control" maxlength="15" [(ngModel)]="promocionItem.titulo" name="titulo"/>
           </div>
         </div>
         <div class="form-group row">
           <label  class="col-sm-2 col-form-label">Descripción</label>
           <div class="col-sm-10">
-          	<textarea class="form-control" name="descripcion" rows="3"></textarea>
+          	<textarea class="form-control" name="descripcion" rows="3" [(ngModel)]="promocionItem.decripcion" name="decripcion"></textarea>
           </div>
         </div>
         <div class="form-group row">
           <label  class="col-sm-2 col-form-label"></label>
           <div class="col-sm-5">
             <label  class="col-sm-2 col-form-label">Cantidad</label>
-            <input type="number" name="cantidad" placeholder="1" class="form-control"  min="1" />
+            <input type="number" name="cantidad"  class="form-control"   [(ngModel)]="promocionItem.cantidad" name="cantidad" />
           </div>
           <div class="col-sm-5">
             <label  class="col-sm-2 col-form-label">Operaciones</label>
-            <select class="form-control">
-              <option>*</option>
-              <option>/</option>
-              <option>+</option>
-              <option>-</option>
+            <select class="form-control" [(ngModel)]="promocionItem.operacion" name="operacion">
+              <option value="*">*</option>
+              <option value="/">/</option>
+              <option value="+">+</option>
+              <option value="-">-</option>
             </select>
           </div>
         </div>
@@ -35,45 +35,32 @@
           <label class=" col-form-label col-sm-2">Fecha</label>
           <div class="col-sm-5">
             <label  class="col-sm-2 col-form-label">Activación</label>
-            <input type="date" name="cantidad"  class="form-control"  min="1" />
+            <input type="date"  class="form-control"  min="1" [(ngModel)]="promocionItem.fecha_Activacion" name="fecha_Activacion" />
           </div>
           <div class="col-sm-5">
             <label  class="col-sm-2 col-form-label">Vencimiento</label>
-            <input type="date" name="cantidad" class="form-control"  min="1" />
+            <input type="date" [(ngModel)]="promocionItem.fecha_vencimiento" name="fecha_vencimiento" class="form-control"  min="1" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-form-label col-sm-2">Horario</label>
+          <div class="col-sm-10">
+            <select class="form-control" name="userFk"
+                    [(ngModel)]="promocionItem.horarioFk">
+              <option *ngFor="let hor of ListHorarios" [ngValue]="hor">{{hor.dia}} </option>
+            </select>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-form-label col-sm-2"></label>
           <div class="col-sm-10">
-            <input type="checkbox" value="Es limitado" >
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-form-label col-sm-2"></label>
-          <div class="col-sm-10">
-          <button class="btn btn-primary">Guardar</button>
+          <button class="btn btn-primary" (click)="guardar()">Guardar</button>
           </div>
         </div>
 
       </nb-card-body>
     </nb-card>
   </div>
-  <div class="col-md-6 col-12">
-    <nb-card>
-      <nb-card-header>Horario de promocion</nb-card-header>
-      <nb-card-body>
-        <select multiple class="form-control">
 
-          <option>lunes</option>
-          <option>Martes</option>
-          <option>Miercoles</option>
-          <option>Jueves</option>
-          <option>Viernes</option>
-
-        </select>
-      </nb-card-body>
-      <nb-card-footer></nb-card-footer>
-    </nb-card>
-  </div>
 
 </div>

@@ -45,15 +45,15 @@ export const menu: NbMenuItem [] = [
     children: [
       {
         title: 'Nueva Promocion',
-        link: 'promociones/nuevo'
+        link: 'promocion/nuevo'
       },
       {
         title: 'Lista de Promociones',
-        link: 'promociones/Lista'
+        link: 'promociones'
       },
       {
         title: 'Horarios',
-        link: 'promociones/Horarios'
+        link: 'Horarios'
       }
     ]
   },
