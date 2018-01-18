@@ -1,4 +1,5 @@
 export interface Promocion {
+  id?: number;
   titulo:string;
   decripcion:string;
   cantidad:number;
