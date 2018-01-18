@@ -11,7 +11,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class NewTarjComponent implements OnInit {
 
+  id = '';
   targetaItem: Tarjetas = {
+
     description: '',
     saldo: 2,
     creditos: 3,
@@ -20,7 +22,7 @@ export class NewTarjComponent implements OnInit {
     islimitado: true,
     estado: true ,
   } ;
-  listCliente: Cliente [] ;
+  listCliente:any ;
 
   constructor(
     private maqser: ClienteService,
@@ -32,7 +34,7 @@ export class NewTarjComponent implements OnInit {
       parametros => {
         this.id = parametros['id'];
         if (this.id != 'nuevo') {
-          this.targser.getTarjetas(this.id).subscribe(
+          this.targser.getTarjetas(this.id + '').subscribe(
             resultado => {
               this.targetaItem = resultado;
               console.log(this.targetaItem);

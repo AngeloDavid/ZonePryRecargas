@@ -2,6 +2,7 @@ import {Cliente} from './cliente';
 
 
 export interface Tarjetas {
+  id?: number,
   description: string;
   creditos:number;
   saldo: number;
