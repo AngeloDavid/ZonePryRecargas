@@ -4,7 +4,7 @@ import {Cliente} from '../interfaces/cliente';
 @Injectable()
 export class ClienteService {
 
-  urlServer = 'http://localhost:1337/Cliente';
+  urlServer = 'http://192.168.0.101:1337/Cliente';
   cabecera;
   constructor(private _http: HttpClient) {
     this.cabecera = new HttpHeaders().set('content-type', 'application/json');
