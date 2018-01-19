@@ -86,6 +86,13 @@ export class ListMaqComponent implements OnInit {
     this.maqser.getAllMaqu().subscribe(
       resultado => {
         this.datos = resultado;
+
+        for (let i in resultado) {
+          if(this.datos[i]['estado'] === false)
+            this.datos[i]['estado']= "Inactivo";
+          else
+            this.datos[i]['estado']= "Activo";
+        }
       }
     );
   }

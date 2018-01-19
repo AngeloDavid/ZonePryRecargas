@@ -93,7 +93,7 @@ export class NewRecComponent implements OnInit {
       this.urlCard.getTarID(idcard).subscribe(
         resp => {
           //console.log(resp.objeto);
-          if (resp) {
+          if (resp && resp.error) {
             this.Clienten.cedula = resp.cliente.cedula;
             this.Clienten.nombre = resp.cliente.nombre;
             this.Clienten.apellido = resp.cliente.apellido;
@@ -109,6 +109,8 @@ export class NewRecComponent implements OnInit {
             this.Tarjetan.islimitado = resp.objeto.islimitado;
             this.Tarjetan.id = resp.objeto.id ;
             this.disabledGuardar = false;
+          } else {
+ //           alert('Tarjeta Virtual no encontrada');
           }
           //console.log(this.Clienten);
         }
@@ -131,9 +133,9 @@ export class NewRecComponent implements OnInit {
 
   abonos(id: number) {
     for (let dato of this.datosRecarga){
-      if(dato.abono == id){
-           let cant = this.recargaItem.promocionFk.cantidad;
-           let oper = this.recargaItem.promocionFk.operacion;
+      if(dato.abono == id) {
+           let cant = this.recargaItem.promocionFk? this.recargaItem.promocionFk.cantidad: 1 ;
+           let oper = this.recargaItem.promocionFk ? this.recargaItem.promocionFk.operacion:'*' ;
 
            switch (oper) {
              case '*':

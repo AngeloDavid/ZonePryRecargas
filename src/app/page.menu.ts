@@ -11,15 +11,15 @@ export const menu: NbMenuItem [] = [
   //   home: true,
   // },
   {
-    title: 'Recargar',
+    title: 'Consumo',
     icon: 'fa fa-pencil-square-o' ,
     children: [
       {
-        title: 'Nueva Recarga',
+        title: 'Nueva Consumo',
         link: 'recarga/nuevo'
       },
       {
-        title: 'Últimas Recargas',
+        title: 'Últimas Consumos',
         link: 'recarga/Lista'
       }
     ]
@@ -82,7 +82,7 @@ export const menu: NbMenuItem [] = [
     ],
   },
   {
-    title: 'Tarjetas',
+    title: 'Tarjetas Virtuales',
     icon: 'fa fa-credit-card' ,
     children: [
       {
