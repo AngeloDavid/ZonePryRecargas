@@ -7,7 +7,7 @@ export interface Tarjetas {
   creditos:number;
   saldo: number;
   fecha_vencimiento?: any;
-  fecha_Activacion: any;
+  fecha_Activacion?: any;
   fecha_UltimoMovimiento?: any;
   tipo: string;
   islimitado?: boolean;

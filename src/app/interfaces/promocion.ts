@@ -9,6 +9,7 @@ export interface Promocion {
   fecha_Activacion?: any;
   islimitado?: boolean;
   estado: boolean;
+  aplica_a: string;
   consumos?: any;
   recargas?: any;
   horarioFk?: Horario;

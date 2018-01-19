@@ -13,7 +13,6 @@ export class NewTarjComponent implements OnInit {
 
   id = '';
   targetaItem: Tarjetas = {
-
     description: '',
     saldo: 2,
     creditos: 3,
@@ -23,6 +22,8 @@ export class NewTarjComponent implements OnInit {
     estado: true ,
   } ;
   listCliente:any ;
+
+
 
   constructor(
     private maqser: ClienteService,
@@ -37,7 +38,6 @@ export class NewTarjComponent implements OnInit {
           this.targser.getTarjetas(this.id + '').subscribe(
             resultado => {
               this.targetaItem = resultado;
-              console.log(this.targetaItem);
             }
           );
         }

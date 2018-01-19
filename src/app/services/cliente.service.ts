@@ -22,7 +22,7 @@ export class ClienteService {
   editCliente(Clii: Cliente, id: string) {
     const cuerpo = JSON.stringify(Clii);
     console.log(cuerpo);
-    return this._http.post(this.urlServer + '/' + id, cuerpo );
+    return this._http.post(this.urlServer + '/' + id, cuerpo, { headers: this.cabecera } );
 
   }
 
@@ -31,7 +31,7 @@ export class ClienteService {
   }
 
   getAllCli() {
-    return this._http.get <Cliente>(this.urlServer) ;
+    return this._http.get <Cliente>(this.urlServer, { headers: this.cabecera }) ;
   }
   deleteCli(estado: boolean, id: string) {
     console.log(estado);

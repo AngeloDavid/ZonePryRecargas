@@ -15,6 +15,7 @@ export class NewProComponent implements OnInit {
     titulo: '',
     decripcion: '',
     cantidad: 1,
+    aplica_a: 'recarga',
     operacion: '*',
     estado: true
   };

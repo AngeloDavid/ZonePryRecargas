@@ -40,7 +40,10 @@ export class TargetaService {
     const datos = JSON.stringify({ "estado" :  deletema  });
     console.log(datos);
     return this._http.post(this.urlServer + '/' + id, datos );
-  }
 
+  }
+   getTarID(id: string) {
+     return this._http.get<Tarjetas>(this.urlServer + '/buscarIdCard/' + id, { headers: this.cabecera });
+   }
 
 }

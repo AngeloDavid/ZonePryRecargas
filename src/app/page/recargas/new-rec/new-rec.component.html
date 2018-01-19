@@ -4,7 +4,8 @@
       <nb-card-header>Recarga</nb-card-header>
       <nb-card-body>
         <div class="input-group has-card-icon">
-          <input type="text" placeholder="Tarjeta" class="form-control"/>
+          <input #texto type="text" placeholder="Tarjeta" class="form-control"/>
+          <button class="btn btn-primary" (click)="buscar(texto.value)">Buscar</button>
         </div>
         <div class="row full-name-inputs">
           <div class="col-sm-6 input-group has-person-icon">
@@ -47,7 +48,7 @@
       <nb-card-header><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp; &nbsp;Informacion de la tarjeta</nb-card-header>
       <nb-card-body>
         <div class="input-group ">
-          <input type="text" placeholder="ID" class="form-control" disabled/>
+          <input type="text" placeholder="ID" class="form-control" disabled name="description" [(ngModel)]="Tarjetan.description" />
         </div>
         <div class="row full-name-inputs">
           <div class="col-sm-6 input-group has-money-icon">
