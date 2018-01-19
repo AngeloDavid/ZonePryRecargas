@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class HorarioService {
 
-  urlServer = 'http://192.168.0.100:1337/Horario';
+  urlServer = 'http://localhost:1337/Horario';
   cabecera;
   constructor(private _http: HttpClient) {
     this.cabecera = new HttpHeaders().set('content-type', 'application/json');

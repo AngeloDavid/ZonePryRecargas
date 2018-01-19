@@ -39,15 +39,15 @@ export class ListRecComponent implements OnInit {
       abono: {
         title: 'Abono'
       },
-      total: {
+      /*total: {
         title: 'Total'
-      },
+      },*/
       saldo: {
         title: 'Saldo'
       },
-      credito: {
+      /*credito: {
         title: 'credito'
-      },
+      },*/
       observaciones: {
         title: 'Observaciones'
       },
