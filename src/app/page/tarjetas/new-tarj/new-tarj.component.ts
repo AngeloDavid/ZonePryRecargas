@@ -59,11 +59,21 @@ export class NewTarjComponent implements OnInit {
       this.targser.newTarjetas(this.targetaItem).subscribe(
         resp => {
           console.log(resp);
+           alert('Nuneva Tarjeta ingresada Correctamente');
+        } ,
+        error =>{
+          alert('Error!! Verefique que la informacion ingresada sea correcta');
         }
       );
     } else {
       this.targser.editTarjetas(this.targetaItem, this.targetaItem.id + '' ).subscribe(
-          resp => {console.log('Dato Actualizado')});
+          resp => {alert('Informacion de la tarjeta actulizada');},
+          error =>{
+            alert('Error!! Verefique que la informacion ingresada sea correcta');
+          });
     }
+
+    
   }
+
 }

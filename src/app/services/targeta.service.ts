@@ -5,7 +5,7 @@ import {Tarjetas} from '../interfaces/tarjetas';
 @Injectable()
 export class TargetaService {
 
-  urlServer = 'http://192.168.0.26:1337/Targeta';
+  urlServer = 'http://192.168.0.100:1337/Targeta';
   cabecera;
   constructor(private _http: HttpClient) {
     this.cabecera = new HttpHeaders().set('content-type', 'application/json');
@@ -20,7 +20,7 @@ export class TargetaService {
     return this._http.post(this.urlServer + '/', cuerpo , { headers: this.cabecera });
   }
 
-  editTarjetas(Clii: Tarjetas, id: string) {
+  editTarjetas(Clii: Tarjetas, id: string): any {
     const cuerpo = JSON.stringify(Clii);
     console.log(cuerpo);
     return this._http.post(this.urlServer + '/' + id, cuerpo );
