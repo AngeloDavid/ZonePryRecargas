@@ -46,10 +46,10 @@ export class NewRecComponent implements OnInit {
   ];
 
   recargaItem: Recargas={
-    abono: 5,
-    total: 5,
-    saldo: 3,
-    credito: 2,
+    abono: null,
+    total: null,
+    saldo: null,
+    credito: null,
     observaciones: ''
   };
 
@@ -161,24 +161,28 @@ export class NewRecComponent implements OnInit {
     //
     // console.log(datos);
     console.log(this.Tarjetan);
-    this.recarSer.newRecarga(this.recargaItem).subscribe(
-      resp => {
-        let datos = {
-          'saldo': this.recargaItem.saldo + this.Tarjetan.saldo,
-          'creditos':this.recargaItem.credito + this.Tarjetan.creditos,
-          'fecha_UltimoMovimiento': new Date()
-        };
-        this.urlCard.editSaldo(datos,this.Tarjetan.id+ '').subscribe(
-          resp => {
-            alert('Registro de consumo Existoso');
-          },
-          error => {
-            alert('Error!! Ingrese la informacion correcta para registrar el consumo');
-          }
-        );
-      }
-    );
-
+    if (this.recargaItem.abono == null || this.recargaItem.abono == ''  || this.recargaItem.abono == ' '  )
+    {
+        alert('El campo abono no puede estar en blanco');
+    } else{
+      this.recarSer.newRecarga(this.recargaItem).subscribe(
+        resp => {
+          let datos = {
+            'saldo': this.recargaItem.saldo + this.Tarjetan.saldo,
+            'creditos':this.recargaItem.credito + this.Tarjetan.creditos,
+            'fecha_UltimoMovimiento': new Date()
+          };
+          this.urlCard.editSaldo(datos,this.Tarjetan.id+ '').subscribe(
+            resp => {
+              alert('Registro de consumo Existoso');
+            },
+            error => {
+              alert('Error!! Ingrese la informacion correcta para registrar el consumo');
+            }
+          );
+        }
+      );
+    }
   }
 
   CalcularSaldo(saldoAnterior) {
