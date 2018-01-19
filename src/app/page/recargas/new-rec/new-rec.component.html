@@ -1,43 +1,59 @@
 <div class="row">
   <div class="col-lg-6">
     <nb-card>
-      <nb-card-header>Recarga</nb-card-header>
+      <nb-card-header><i class="fa fa-pencil-square-o"></i> Recarga</nb-card-header>
       <nb-card-body>
-        <div class="input-group has-card-icon">
-          <input #texto type="text" placeholder="Tarjeta" class="form-control"/>
-          <button class="btn btn-primary" (click)="buscar(texto.value)">Buscar</button>
+        <div class="row full-name-inputs ">
+          <div class="col-sm-10 input-group has-card-icon">
+            <input #texto type="text" placeholder="Buscar por Tarjeta" (keyup)="buscar(texto.value)" class="form-control"/>
+
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-info btn-block" (click)="buscar(texto.value)" ><i class="fa fa-search"></i></button>
+          </div>
+
         </div>
         <div class="row full-name-inputs">
           <div class="col-sm-6 input-group has-person-icon">
-            <input type="text" placeholder="Nombre" class="form-control"/>
+            <input type="text" placeholder="Nombre" class="form-control" name="nombre" [ngModel]="Clienten.nombre"  />
           </div>
           <div class="col-sm-6 input-group">
-            <input type="text" placeholder="Apellido" class="form-control"/>
+            <input type="text" placeholder="Apellido" class="form-control" name="apellido" [ngModel]="Clienten.apellido"  />
           </div>
         </div>
         <div class="form-group">
           <label>Promocion</label>
-          <select  class="form-control">
-            <option *ngFor="let promo of Promociones">{{promo.titulo}}</option>
+          <select  class="form-control" name="promocionFk" [(ngModel)]="recargaItem.promocionFk">
+            <option *ngFor="let promo of Promociones" [ngValue]="promo">{{promo.titulo}}</option>
           </select>
         </div>
         <div class="row full-name-inputs">
-          <div class=" col-sm-4 input-group ">
-            <input type="number" placeholder="Abono" class="form-control"/>
+          <div class=" col-sm-3 form-group ">
+            <!--<input type="number" placeholder="Abono" class="form-control"/>-->
+            <label class="form-control-label">Abono</label>
+            <select #selectorab class="form-control" name="abono" [(ngModel)]="recargaItem.abono" (change)="abonos(selectorab.value)" >
+              <option *ngFor="let op of datosRecarga;let i = index" [value]="op.abono" >{{op.abono}}</option>
+            </select>
           </div>
-          <div class=" col-sm-4 input-group">
-            <input type="text" placeholder="Total" class="form-control"/>
+          <div class=" col-sm-3 form-group">
+            <label class="form-control-label">Total</label>
+            <input type="text" placeholder="Total" class="form-control" name="total" [(ngModel)]="recargaItem.total" disabled/>
           </div>
-          <div class=" col-sm-4 form-group">
-            <input type="text" placeholder="Saldo" class="form-control"/>
+          <div class=" col-sm-3 form-group">
+            <label class="form-control-label">Saldo</label>
+            <input type="text" placeholder="Saldo" class="form-control" name="saldo"[(ngModel)]="recargaItem.saldo" disabled/>
+          </div>
+          <div class=" col-sm-3 form-group">
+            <label class="form-control-label">Credito</label>
+            <input type="text" placeholder="Credito" class="form-control" name="credito" [(ngModel)]="recargaItem.credito" disabled/>
           </div>
         </div>
         <div class="input-group">
-          <textarea rows="5" placeholder="Observacion" class="form-control"></textarea>
+          <textarea rows="5" placeholder="Observacion" class="form-control"name="observaciones" [(ngModel)]="recargaItem.observaciones" ></textarea>
         </div>
       </nb-card-body>
       <nb-card-footer>
-        <button class="btn btn-primary">Recargar</button>
+        <button class="btn btn-primary" [disabled]="disabledGuardar" (click)="Guardar()" >Recargar</button>
       </nb-card-footer>
     </nb-card>
 
@@ -45,37 +61,37 @@
 
   <div class="col-lg-6">
     <nb-card>
-      <nb-card-header><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp; &nbsp;Informacion de la tarjeta</nb-card-header>
+      <nb-card-header><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;&nbsp; &nbsp;Informacion de la tarjeta Virtual</nb-card-header>
       <nb-card-body>
         <div class="input-group ">
-          <input type="text" placeholder="ID" class="form-control" disabled name="description" [(ngModel)]="Tarjetan.description" />
+          <input type="text" placeholder="ID" class="form-control" disabled  name="description" [ngModel]="Tarjetan.description" />
         </div>
         <div class="row full-name-inputs">
           <div class="col-sm-6 input-group has-money-icon">
-            <input type="text" placeholder="Saldo" class="form-control" disabled/>
+            <input type="text" placeholder="Saldo" class="form-control" disabled name="saldo" [ngModel]="Tarjetan.saldo" />
           </div>
           <div class="col-sm-6 input-group has-money-icon">
-            <input type="text" placeholder="Credito" class="form-control" disabled/>
+            <input type="text" placeholder="Credito" class="form-control" disabled name="creditos" [ngModel]="Tarjetan.creditos"/>
           </div>
         </div>
         <div class="input-group">
-          <input type="text" placeholder="Fecha de vencimiento" class="form-control" disabled>
+          <input type="text" placeholder="Fecha de vencimiento" class="form-control"  disabled name="fecha_vencimiento" [ngModel]="Tarjetan.fecha_vencimiento">
         </div>
       </nb-card-body>
     </nb-card>
 
 
     <nb-card>
-      <nb-card-header>Informacion del cliente</nb-card-header>
+      <nb-card-header><i class="fa fa-user"></i> Informacion del cliente</nb-card-header>
       <nb-card-body>
         <div class="row">
-          <div class="col-sm-6">
-            <img class="img-fluid rounded">
+          <div class="col-sm-6 align-items-center text-center">
+            <img class="img-fluid rounded" src="../../../../assets/default.png">
           </div>
           <div class="col-sm-6 ">
-            <input type="text" placeholder="Nombre" class="form-control"/>
-            <input type="text" placeholder="Edad" class="form-control"/>
-            <input type="text" placeholder="Fecha Nacimiento" class="form-control"/>
+            <input type="text" placeholder="Nombre" class="form-control cli" [ngModel]="userCliente" />
+            <input type="text" placeholder="Edad" class="form-control cli" [ngModel]="edadCliente"/>
+            <input type="text" placeholder="Fecha Nacimiento" class="form-control cli" [ngModel]="Clienten.fecha_nacimiento" />
           </div>
         </div>
       </nb-card-body>

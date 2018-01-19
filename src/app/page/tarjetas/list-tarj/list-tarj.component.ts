@@ -49,7 +49,8 @@ export class ListTarjComponent implements OnInit {
         title: 'Tipo de tarjeta'
       },
       islimitado: {
-        title: 'Limite de saldo'
+        title: 'Limite de saldo',
+        type: 'html'
       },
       estado: {
         title: 'Estado'
@@ -103,11 +104,10 @@ export class ListTarjComponent implements OnInit {
   getAllTarjetas(): void {
     this.maqser.getAllTar().subscribe(
       resultado => {
-        this.datos = resultado;  
-        
-        //seteando valor usrFK     
+        this.datos = resultado;
+        //seteando valor usrFK
         for (let i in resultado) {
-          this.datos[i]['userFk']=resultado[i]['userFk']['nombre']+" "+ resultado[i]['userFk']['apellido'];
+          this.datos[i]['userFk']= resultado[i]['userFk']['nombre']+ " " + resultado[i]['userFk']['apellido'];
 
           if(this.datos[i]['estado'] === true)
                this.datos[i]['estado'] = "Activo";
@@ -115,9 +115,9 @@ export class ListTarjComponent implements OnInit {
               this.datos[i]['estado'] = "Inactivo";
 
           if(this.datos[i]['islimitado'] === true)
-               this.datos[i]['islimitado'] = "Activo";
+               this.datos[i]['islimitado'] = '<i class="fa fa-check" aria-hidden="true"></i>';
           else
-              this.datos[i]['islimitado'] = "Inactivo";
+              this.datos[i]['islimitado'] = '<i class="fa fa-times" aria-hidden="true"></i>';
 
         }
 

@@ -38,6 +38,7 @@ export class NewTarjComponent implements OnInit {
           this.targser.getTarjetas(this.id + '').subscribe(
             resultado => {
               this.targetaItem = resultado;
+              console.log(this.targetaItem);
             }
           );
         }

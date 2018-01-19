@@ -111,8 +111,8 @@
       font-size: 1.9rem;
       position: absolute;
       z-index: 100;
-      left: 1rem;
-      top: 0.5rem;
+      left: 2rem;
+      top: 0.6rem;
 
     }
   }
@@ -146,4 +146,8 @@ ngb-rating i {
     font-size: 0.75rem;
   }
 }
+}
+
+.form-control.cli{
+  margin-bottom: 5%;
 }

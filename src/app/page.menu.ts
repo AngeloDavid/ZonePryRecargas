@@ -4,12 +4,12 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const menu: NbMenuItem [] = [
-  {
-    title: 'Escritorio',
-    icon: 'fa fa-home' ,
-    link: 'home',
-    home: true,
-  },
+  // {
+  //   title: 'Escritorio',
+  //   icon: 'fa fa-home' ,
+  //   link: 'home',
+  //   home: true,
+  // },
   {
     title: 'Recargar',
     icon: 'fa fa-pencil-square-o' ,

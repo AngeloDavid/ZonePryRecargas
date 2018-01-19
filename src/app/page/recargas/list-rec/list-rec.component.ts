@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import {RecargasService}from  '../../../services/recargas.service';
 
 @Component({
   selector: 'app-list-rec',
@@ -25,7 +26,9 @@ export class ListRecComponent implements OnInit {
       confirmDelete: true,
     },
     actions: {
-      columnTitle: 'Acciones'
+      columnTitle: 'Acciones',
+      edit: false,
+      delete: false
     },
     mode: 'external',
     noDataMessage: 'Sin clientes encontrados',
@@ -33,18 +36,44 @@ export class ListRecComponent implements OnInit {
       id: {
         title: 'ID'
       },
-      name: {
-        title: 'Tarjetas'
+      abono: {
+        title: 'Abono'
       },
-      username: {
-        title: 'Cliente'
+      total: {
+        title: 'Total'
       },
-      email: {
-        title: 'Cantidad'
+      saldo: {
+        title: 'Saldo'
+      },
+      credito: {
+        title: 'credito'
+      },
+      observaciones: {
+        title: 'Observaciones'
+      },
+      tarjetaFk: {
+        title: 'Tarjeta'
+      },
+      promocionFk: {
+        title: 'Promocion'
       }
     }
   };
-  constructor(private _router: Router) { }
+  datos:any;
+  constructor(private _router: Router,private recarSer: RecargasService) {
+         this.recarSer.getAllRec().subscribe(
+           resultado=>{
+             this.datos = resultado;
+
+             for (let i in resultado) {
+               if(this.datos[i]['tarjetaFk'])
+                  this.datos[i]['tarjetaFk']= resultado[i]['tarjetaFk']['description'];
+               if(this.datos[i]['promocionFk'])
+                  this.datos[i]['promocionFk']= resultado[i]['promocionFk']['titulo'];
+             }
+           }
+         );
+  }
 
   ngOnInit() {
   }

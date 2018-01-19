@@ -30,7 +30,7 @@ const APP_ROUTES: Routes = [
   {path: 'clientes', component: ListCliComponent},
   {path: 'tarjeta/:id', component: NewTarjComponent},
   {path: 'tarjetas', component: ListTarjComponent},
-  {path: '**' , pathMatch: 'full', redirectTo: 'home'}
+  {path: '**' , pathMatch: 'full', redirectTo: 'recarga/nuevo'}
 ];
 
 

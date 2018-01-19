@@ -93,6 +93,15 @@ export class ListProComponent implements OnInit {
     this.maqser.getAllPromocion().subscribe(
       resultado => {
         this.datos = resultado;
+
+        for (let i in resultado) {
+          this.datos[i]['horarioFk']= resultado[i]['horarioFk']['dia'];
+
+          if(this.datos[i]['estado'] === true)
+            this.datos[i]['estado'] = "Activo";
+          else
+            this.datos[i]['estado'] = "Inactivo";
+        }
       }
     );
   }

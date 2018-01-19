@@ -5,7 +5,7 @@ import {Tarjetas} from '../interfaces/tarjetas';
 @Injectable()
 export class TargetaService {
 
-  urlServer = 'http://192.168.0.101:1337/Targeta';
+  urlServer = 'http://localhost:1337/Targeta';
   cabecera;
   constructor(private _http: HttpClient) {
     this.cabecera = new HttpHeaders().set('content-type', 'application/json');
@@ -31,8 +31,17 @@ export class TargetaService {
     return this._http.get<Tarjetas>(this.urlServer + '/' + id, { headers: this.cabecera });
   }
 
-  getAllTar() {
-    return this._http.get <Tarjetas>(this.urlServer) ;
+  editSaldo(estado: any, id: string) {
+    console.log(estado);
+
+    const datos = JSON.stringify(estado);
+    console.log(datos);
+    return this._http.post(this.urlServer + '/' + id, datos );
+
+  }
+
+  getAllTar(): any {
+    return this._http.get(this.urlServer) ;
   }
   deleteTar(estado: boolean, id: string) {
     console.log(estado);
@@ -42,8 +51,8 @@ export class TargetaService {
     return this._http.post(this.urlServer + '/' + id, datos );
 
   }
-   getTarID(id: string) {
-     return this._http.get<Tarjetas>(this.urlServer + '/buscarIdCard/' + id, { headers: this.cabecera });
+   getTarID(id: string): any {
+     return this._http.get(this.urlServer + '/buscarIdCard/' + id, { headers: this.cabecera });
    }
 
 }
