@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class PromocionService {
 
-  urlServer = 'http://localhost:1337/Promocion';
+  urlServer = 'http://192.168.0.26:1337/Promocion';
   cabecera;
   constructor(private _http: HttpClient) {
     this.cabecera = new HttpHeaders().set('content-type', 'application/json');

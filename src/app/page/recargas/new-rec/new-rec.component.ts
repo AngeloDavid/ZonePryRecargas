@@ -169,7 +169,7 @@ export class NewRecComponent implements OnInit {
         };
         this.urlCard.editSaldo(datos,this.Tarjetan.id+ '').subscribe(
           resp => {
-            console.log('datos actualizados');
+            alert('Registro de consumo Existoso');
           }
         )
       }

@@ -5,7 +5,7 @@ import {Tarjetas} from '../interfaces/tarjetas';
 @Injectable()
 export class TargetaService {
 
-  urlServer = 'http://localhost:1337/Targeta';
+  urlServer = 'http://192.168.0.26:1337/Targeta';
   cabecera;
   constructor(private _http: HttpClient) {
     this.cabecera = new HttpHeaders().set('content-type', 'application/json');
