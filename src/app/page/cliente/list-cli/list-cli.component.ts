@@ -55,7 +55,8 @@ export class ListCliComponent implements OnInit {
         title: 'Estado'
       },
       tarjetas: {
-        title: 'Tarjetas'
+        title: 'Tarjetas',
+        type: 'html'
       }
     }
   };
@@ -91,7 +92,34 @@ export class ListCliComponent implements OnInit {
     this.maqser.getAllCli().subscribe(
       resultado => {
         this.datos = resultado;
+        let numTarj:any=0;
+        let saldoTarj:any=0;
+        let creditoTarj:any=0;
+        
+        for (let i in resultado) {
+
+          //Calculo total de saldo - credito de las tarjetas
+          for (let j in this.datos[i]['tarjetas']) {
+            if( this.datos[i]['tarjetas'][j]['estado'] === true ){
+              numTarj=numTarj+1;
+              saldoTarj = saldoTarj + this.datos[i]['tarjetas'][j]['saldo'];
+              creditoTarj = creditoTarj + this.datos[i]['tarjetas'][j]['creditos'];
+            }
+          }
+          this.datos[i]['tarjetas'] = "# "+numTarj+" <br>sal. $"+saldoTarj+" "+" <br>cred. $"+creditoTarj;
+          numTarj=0;
+          saldoTarj=0;
+          creditoTarj=0;
+          
+          //Seteando valor estado
+          if(this.datos[i]['estado'] === false)
+            this.datos[i]['estado']= "Inactivo";
+          else
+            this.datos[i]['estado']= "Activo";
+        }
       }
     );
   }
+
+
 }

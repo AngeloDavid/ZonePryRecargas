@@ -56,10 +56,23 @@ export class ListTarjComponent implements OnInit {
       },
       userFk: {
         title: 'Usuario'
+
       }
     }
   };
-  datos: any;
+
+   data: Object = {
+      description:"",
+      creditos:"",
+      saldo:"",
+      fecha_vencimiento:"",
+      fecha_Activacion:"",
+      tipo:"",
+      islimitado:"",
+      estado:"",
+      nombreUser:""
+  };
+  datos:any;
 
   constructor(private maqser: TargetaService,
               private _router: Router) {
@@ -68,6 +81,7 @@ export class ListTarjComponent implements OnInit {
 
   ngOnInit() {
   }
+
   addMaqui(): void {
     this._router.navigate(['/tarjeta/nuevo']);
   }
@@ -89,9 +103,29 @@ export class ListTarjComponent implements OnInit {
   getAllTarjetas(): void {
     this.maqser.getAllTar().subscribe(
       resultado => {
-        this.datos = resultado;
+        this.datos = resultado;  
+        
+        //seteando valor usrFK     
+        for (let i in resultado) {
+          this.datos[i]['userFk']=resultado[i]['userFk']['nombre']+" "+ resultado[i]['userFk']['apellido'];
+
+          if(this.datos[i]['estado'] === true)
+               this.datos[i]['estado'] = "Activo";
+          else
+              this.datos[i]['estado'] = "Inactivo";
+
+          if(this.datos[i]['islimitado'] === true)
+               this.datos[i]['islimitado'] = "Activo";
+          else
+              this.datos[i]['islimitado'] = "Inactivo";
+
+        }
+
       }
     );
   }
 
 }
+
+
+
