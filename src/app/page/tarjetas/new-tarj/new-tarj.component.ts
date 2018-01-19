@@ -59,10 +59,10 @@ export class NewTarjComponent implements OnInit {
       this.targser.newTarjetas(this.targetaItem).subscribe(
         resp => {
           console.log(resp);
-           alert('Nuneva Tarjeta ingresada Correctamente');
+           alert('Nueva Tarjeta ingresada Correctamente');
         } ,
         error =>{
-          alert('Error!! Verefique que la informacion ingresada sea correcta');
+          alert('Error!! Verifique que la información ingresada sea correcta');
         }
       );
     } else {
@@ -73,7 +73,11 @@ export class NewTarjComponent implements OnInit {
           });
     }
 
-    
   }
+
+  cambiarCed():  void {
+    this.targetaItem.description = this.targetaItem.userFk.cedula ;
+  }
+
 
 }

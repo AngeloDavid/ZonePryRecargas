@@ -21,26 +21,27 @@
             <input type="text" placeholder="Apellido" class="form-control" name="apellido" [ngModel]="Clienten.apellido"  />
           </div>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
           <label>Promocion</label>
           <select  class="form-control" name="promocionFk" [(ngModel)]="recargaItem.promocionFk">
             <option *ngFor="let promo of Promociones" [ngValue]="promo">{{promo.titulo}}</option>
           </select>
-        </div>
+        </div>-->
         <div class="row full-name-inputs">
           <div class=" col-sm-3 form-group ">
-            <!--<input type="number" placeholder="Abono" class="form-control"/>-->
+
             <label class="form-control-label">Abono</label>
-            <select #selectorab class="form-control" name="abono" [(ngModel)]="recargaItem.abono" (change)="abonos(selectorab.value)" >
+            <input type="number" placeholder="Abono" class="form-control" name="abono" [(ngModel)]="recargaItem.abono" (keyup)="CalcularSaldo(SaldoAnterior.value)" />
+            <!--<select #selectorab class="form-control" name="abono" [(ngModel)]="recargaItem.abono" (change)="abonos(selectorab.value)" >
               <option *ngFor="let op of datosRecarga;let i = index" [value]="op.abono" >{{op.abono}}</option>
-            </select>
+            </select>-->
           </div>
           <div class=" col-sm-3 form-group">
-            <label class="form-control-label">Total</label>
-            <input type="text" placeholder="Total" class="form-control" name="total" [(ngModel)]="recargaItem.total" disabled/>
+            <label class="form-control-label">Saldo Anterior</label>
+            <input #SaldoAnterior type="text" placeholder="Total" class="form-control" [ngModel]="Tarjetan.saldo"  disabled/>
           </div>
           <div class=" col-sm-3 form-group">
-            <label class="form-control-label">Saldo</label>
+            <label class="form-control-label">Nuevo Saldo</label>
             <input type="text" placeholder="Saldo" class="form-control" name="saldo"[(ngModel)]="recargaItem.saldo" disabled/>
           </div>
           <div class=" col-sm-3 form-group">

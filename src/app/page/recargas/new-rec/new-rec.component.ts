@@ -134,7 +134,7 @@ export class NewRecComponent implements OnInit {
   abonos(id: number) {
     for (let dato of this.datosRecarga){
       if(dato.abono == id) {
-           let cant = this.recargaItem.promocionFk? this.recargaItem.promocionFk.cantidad: 1 ;
+           /*let cant = this.recargaItem.promocionFk? this.recargaItem.promocionFk.cantidad: 1 ;
            let oper = this.recargaItem.promocionFk ? this.recargaItem.promocionFk.operacion:'*' ;
 
            switch (oper) {
@@ -144,7 +144,8 @@ export class NewRecComponent implements OnInit {
                 this.recargaItem.credito = dato.credito;
                 break;
 
-           }
+           }*/
+        this.recargaItem.saldo = dato.abono;
       }
     }
   }
@@ -161,7 +162,7 @@ export class NewRecComponent implements OnInit {
     // console.log(datos);
     console.log(this.Tarjetan);
     this.recarSer.newRecarga(this.recargaItem).subscribe(
-      resp =>{
+      resp => {
         let datos = {
           'saldo': this.recargaItem.saldo + this.Tarjetan.saldo,
           'creditos':this.recargaItem.credito + this.Tarjetan.creditos,
@@ -170,10 +171,20 @@ export class NewRecComponent implements OnInit {
         this.urlCard.editSaldo(datos,this.Tarjetan.id+ '').subscribe(
           resp => {
             alert('Registro de consumo Existoso');
+          },
+          error => {
+            alert('Error!! Ingrese la informacion correcta para registrar el consumo');
           }
-        )
+        );
       }
     );
 
+  }
+
+  CalcularSaldo(saldoAnterior) {
+    console.log(this.recargaItem.abono);
+    let abono: number = Number(this.recargaItem.abono ? Number( this.recargaItem.abono ) : 0 );
+    let saldo_anterior: number = Number(saldoAnterior ?  Number( saldoAnterior + '' ) : 0 );
+    this.recargaItem.saldo = abono + saldo_anterior ;
   }
 }

@@ -28,7 +28,9 @@ export class HorariosComponent implements OnInit {
     },
     actions: {
       columnTitle: 'Acciones',
-      delete:false
+      delete:false,
+      add:false,
+      edit:false
     },
     noDataMessage: 'Sin Horarios encontrados',
     columns: {
@@ -61,6 +63,12 @@ export class HorariosComponent implements OnInit {
     this.servicio.getAllHora().subscribe(
       resp => {
         this.data = resp;
+        for (let i in resp) {
+          if(this.data[i]['estado'] === false)
+            this.data[i]['estado']= "Inactivo";
+          else
+            this.data[i]['estado']= "Activo";
+        }
       }
     );
   }
@@ -68,12 +76,12 @@ export class HorariosComponent implements OnInit {
   ngOnInit() {
   }
 
-  guardar(event): void {
+  /*guardar(event): void {
     console.log(event.newData);
     this.servicio.newHorario(event.newData).subscribe(
       resp => {
         event.confirm.resolve();
       }
     ) ;
-  }
+  }*/
 }

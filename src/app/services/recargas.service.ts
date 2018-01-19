@@ -6,7 +6,7 @@ import {Recargas} from '../interfaces/recargas';
 
 @Injectable()
 export class RecargasService {
-  urlServer = 'http://192.168.0.100:1337/Recarga';
+  urlServer = 'http://localhost:1337/Recarga';
   cabecera;
   constructor(private _http: HttpClient) {
     this.cabecera = new HttpHeaders().set('content-type', 'application/json');

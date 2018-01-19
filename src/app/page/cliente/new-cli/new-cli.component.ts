@@ -65,20 +65,26 @@ export class NewCliComponent implements OnInit {
 
   guardar() {
     if (this.id == 'nuevo') {
-      if (this.clienteItem.cedula == '' || this.targetaItem.description== ''){
-        alert('Cliente y targeta vacios');
+      if (this.clienteItem.cedula == '' || this.clienteItem.nombre== ''|| this.clienteItem.apellido== ''){
+        alert('Error!! Cedula o nombre o apellido vacios');
       }else {
         console.log(this.targetaItem);
         this.maqser.newCliente(this.clienteItem).subscribe(
           resultado => {
-            console.log('registrado', resultado);
+            alert('Registro del nuevo cliente con exito');
+          },
+          error => {
+            alert('Error!! Al registrar el nuevo Cliente  ');
           }
         );
       }
     } else {
       this.maqser.editCliente(this.clienteItem, this.id).subscribe(
         resultado => {
-          console.log('editado');
+          alert('Edición del cliente completada con exito');
+        },
+        error => {
+          alert('Error!! Al actualizar la información del cliente');
         }
       );
     }

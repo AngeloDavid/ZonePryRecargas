@@ -7,13 +7,13 @@
         <div class="form-group row">
           <label  class="col-sm-2 col-form-label">ID-Card</label>
           <div class="col-sm-10">
-            <input #idCard type="text" placeholder="ssxaw1212323cds" class="form-control" name="description" [(ngModel)]="targetaItem.description" />
+            <input  type="text" placeholder="ssxaw1212323cds" class="form-control" name="description" [(ngModel)]="targetaItem.description" />
           </div>
         </div>
         <div class="form-group row">
           <label  class="col-sm-2 col-form-label">Cliente</label>
           <div class="col-sm-10">
-            <select class="form-control" name="userFk"
+            <select #idCard class="form-control" name="userFk"   (change)="cambiarCed()"
                     [(ngModel)]="targetaItem.userFk">
               <option *ngFor="let cli of listCliente" [ngValue]="cli">{{cli.nombre}} {{cli.apellido}} </option>
             </select>
