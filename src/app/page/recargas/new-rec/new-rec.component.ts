@@ -161,7 +161,7 @@ export class NewRecComponent implements OnInit {
     //
     // console.log(datos);
     console.log(this.Tarjetan);
-    if (this.recargaItem.abono == null || this.recargaItem.abono == ''  || this.recargaItem.abono == ' '  )
+    if (this.recargaItem.abono == null)
     {
         alert('El campo abono no puede estar en blanco');
     } else{
