@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
-
+import { NbEmailPassAuthProvider, NbAuthModule } from '@nebular/auth';
 import {
-
   NbActionsModule,
   NbCardModule,
   NbLayoutModule,
@@ -43,6 +42,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HorariosComponent } from './page/promociones/horarios/horarios.component';
 import { NewTarjComponent } from './page/tarjetas/new-tarj/new-tarj.component';
 import { ListTarjComponent } from './page/tarjetas/list-tarj/list-tarj.component';
+import { LoginComponent } from './page/login/login.component';
 
 
 
@@ -76,7 +76,8 @@ const NB_MODULES = [
     ListRecComponent,
     HorariosComponent,
     NewTarjComponent,
-    ListTarjComponent
+    ListTarjComponent,
+    LoginComponent
   ],
   imports: [
     HttpClientModule,
@@ -87,6 +88,17 @@ const NB_MODULES = [
     APP_ROUTING,
     NgbModule.forRoot(),
     NbThemeModule.forRoot({ name: 'cosmic' }),
+    NbAuthModule.forRoot({
+         providers: {
+           email: {
+             service: NbEmailPassAuthProvider,
+             config: {
+             
+             },
+           },
+         },
+         forms: {},
+       }), 
   ],
   providers: [NbSidebarModule.forRoot().providers, NbMenuModule.forRoot().providers, MaquinaService, ClienteService, HorarioService, TargetaService, PromocionService, RecargasService],
   bootstrap: [AppComponent ]

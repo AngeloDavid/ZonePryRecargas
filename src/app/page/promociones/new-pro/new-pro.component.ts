@@ -30,9 +30,11 @@ export class NewProComponent implements OnInit {
         if (this.id != 'nuevo') {
           this.targser.getPromocion(this.id + '').subscribe(
             resultado => {
+              console.log("Edicion");
               this.promocionItem = resultado;
               console.log(this.promocionItem);
-            }
+              console.log(this.promocionItem['horarioFk']['dia']);
+            }  
           );
         }
         this.maqser.getAllHora().subscribe(

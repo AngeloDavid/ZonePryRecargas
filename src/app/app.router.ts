@@ -15,9 +15,48 @@ import { NewRecComponent } from './page/recargas/new-rec/new-rec.component';
 import { ListRecComponent } from './page/recargas/list-rec/list-rec.component';
 import  {ListTarjComponent} from  './page/tarjetas/list-tarj/list-tarj.component';
 import {NewTarjComponent} from  './page/tarjetas/new-tarj/new-tarj.component';
+import {LoginComponent} from  './page/login/login.component';
+import {
+  NbAuthComponent,
+  NbLoginComponent,
+  NbRegisterComponent,
+  NbLogoutComponent,
+  NbRequestPasswordComponent,
+  NbResetPasswordComponent,
+} from '@nebular/auth';
 
 
 const APP_ROUTES: Routes = [
+  {
+    path: 'auth',
+    component: NbAuthComponent,
+    children: [
+      {
+        path: '',
+        component: NbLoginComponent,
+      },
+      {
+        path: 'login',
+        component: NbLoginComponent,
+      },
+      {
+        path: 'register',
+        component: NbRegisterComponent,
+      },
+      {
+        path: 'logout',
+        component: NbLogoutComponent,
+      },
+      {
+        path: 'request-password',
+        component: NbRequestPasswordComponent,
+      },
+      {
+        path: 'reset-password',
+        component: NbResetPasswordComponent,
+      },
+    ],
+  },
   {path: 'home' , component: EscritorioComponent},
   {path: 'recarga/nuevo', component: NewRecComponent},
   {path: 'recarga/Lista', component: ListRecComponent},
@@ -30,6 +69,7 @@ const APP_ROUTES: Routes = [
   {path: 'clientes', component: ListCliComponent},
   {path: 'tarjeta/:id', component: NewTarjComponent},
   {path: 'tarjetas', component: ListTarjComponent},
+  /*{path: 'login', component: LoginComponent},*/
   {path: '**' , pathMatch: 'full', redirectTo: 'recarga/nuevo'}
 ];
 

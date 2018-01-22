@@ -46,9 +46,10 @@
         <div class="form-group row">
           <label class="col-form-label col-sm-2">Horario</label>
           <div class="col-sm-10">
-            <select class="form-control" name="userFk"
+            <select class="form-control" name="userFk" id="select"
                     [(ngModel)]="promocionItem.horarioFk">
-              <option *ngFor="let hor of ListHorarios" [ngValue]="hor">{{hor.dia}} </option>
+              <option *ngFor="let hor of ListHorarios" value="'{{hor.dia}}'" [ngValue]="hor">{{hor.dia}} </option>
+        
             </select>
           </div>
         </div>
