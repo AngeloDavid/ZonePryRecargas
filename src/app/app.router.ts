@@ -70,7 +70,7 @@ const APP_ROUTES: Routes = [
   {path: 'tarjeta/:id', component: NewTarjComponent},
   {path: 'tarjetas', component: ListTarjComponent},
   /*{path: 'login', component: LoginComponent},*/
-  {path: '**' , pathMatch: 'full', redirectTo: 'recarga/nuevo'}
+  {path: '**' , pathMatch: 'full', redirectTo: 'auth/login'}
 ];
 
 
