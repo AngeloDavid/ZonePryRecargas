@@ -69,9 +69,8 @@ const APP_ROUTES: Routes = [
   {path: 'clientes', component: ListCliComponent},
   {path: 'tarjeta/:id', component: NewTarjComponent},
   {path: 'tarjetas', component: ListTarjComponent},
-  /*{path: 'login', component: LoginComponent},*/
   {path: '**' , pathMatch: 'full', redirectTo: 'auth/login'}
 ];
 
-
+   
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

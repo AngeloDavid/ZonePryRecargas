@@ -6,8 +6,8 @@ import {menu} from '../../page.menu';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit {
 
+export class MenuComponent implements OnInit {
   public _menund= menu;
   constructor(private sidebarService: NbSidebarService) { }
 
@@ -24,3 +24,5 @@ export class MenuComponent implements OnInit {
   }
 
 }
+
+

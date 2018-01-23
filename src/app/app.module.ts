@@ -94,13 +94,13 @@ const NB_MODULES = [
              service: NbEmailPassAuthProvider,
              config: {
 
-               baseEndpoint: '',
+               baseEndpoint: 'http://localhost:1337/User',
                login: {
-                 endpoint: '/auth/sign-in',
-                 method: 'post',
+                 endpoint: '/auth',
+                 method: 'get',
                },
                register: {
-                 endpoint: '/auth/sign-up',
+                 endpoint: '',
                  method: 'post',
                },
                logout: {
