@@ -6,7 +6,11 @@
         <div class="form-inline">
           <div class="input-group full-width">
             <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-            <input #fechaBuscar type="date" [(ngModel)]="searchDate" class="form-control full-width" >
+            <input #fechaBuscar type="date" [(ngModel)]="fechaInicio" class="form-control full-width"  >
+          </div>
+          <div class="input-group full-width">
+            <div class="input-group-addon"><i class="fa fa-calendar-o" aria-hidden="true"></i></div>
+            <input #fechaBuscar type="date" [(ngModel)]="fechaFinal" class="form-control full-width" [min]="fechaInicio" >
           </div>
           <button type="button" class="btn btn-primary" (click)="buscar(fechaBuscar.value)">Buscar</button>
           <button type="button" class="btn btn-info" (click)="allRrint()">Imprimir</button>
@@ -16,18 +20,6 @@
   </div>
 </div>
 <nb-card>
-  <nb-card-header>
-    Consumos
-  </nb-card-header>
-  <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="souces"  (create)="addMaqui()" (delete)="onPrint($event)"></ng2-smart-table>
-  </nb-card-body>
-  <nb-card-footer>
-    <div class="row">
-      <div class="col text-center" *ngFor="let tot of Totales">
-
-        <p> <strong>{{tot.name}}</strong> : $ {{tot.value}}</p>
-      </div>
-    </div>
-  </nb-card-footer>
+  <nb-card-header>Lista de reportes</nb-card-header>
+  <nb-card-body></nb-card-body>
 </nb-card>

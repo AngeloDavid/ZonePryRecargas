@@ -31,7 +31,7 @@ export class TargetaService {
     return this._http.get<Tarjetas>(this.urlServer + '/' + id, { headers: this.cabecera });
   }
 
-  editSaldo(estado: any, id: string) {
+  editSaldo(estado: any, id: string): any {
     console.log(estado);
 
     const datos = JSON.stringify(estado);

@@ -5,13 +5,13 @@
       <nb-card-body>
 
         <div class="form-group row">
-          <label  class="col-sm-2 col-form-label">ID-Card</label>
+          <label  class="col-sm-2 col-form-label">ID-Card (*)</label>
           <div class="col-sm-10">
             <input  type="text" placeholder="ssxaw1212323cds" class="form-control" name="description" [(ngModel)]="targetaItem.description" />
           </div>
         </div>
         <div class="form-group row">
-          <label  class="col-sm-2 col-form-label">Cliente</label>
+          <label  class="col-sm-2 col-form-label">Cliente (*) </label>
           <div class="col-sm-10">
             <select #idCard class="form-control" name="userFk"   (change)="cambiarCed()"
                     [(ngModel)]="targetaItem.userFk">
@@ -29,15 +29,15 @@
             </select>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" [hidden]="!targetaItem.islimitado">
           <label  class="col-sm-2 col-form-label">Cantidad</label>
           <div class="col-sm-5">
-            <label  class="col-sm-2 col-form-label">Saldo</label>
-            <input type="number" placeholder="0.00" class="form-control" name="saldo" [(ngModel)]="targetaItem.saldo" />
+            <label  class="col-sm-12 col-form-label">Saldo (*)</label>
+            <input min="0" type="number" placeholder="0.00" class="form-control" name="saldo" [(ngModel)]="targetaItem.saldo" [disabled]="id !='nuevo'" />
           </div>
           <div class="col-sm-5">
-            <label  class="col-sm-2 col-form-label">Credito</label>
-            <input type="number" placeholder="0.00" class="form-control" name="creditoa" [(ngModel)]="targetaItem.creditos" />
+            <label  class="col-sm-12 col-form-label">Credito</label>
+            <input min="0" type="number" placeholder="0.00" class="form-control" name="creditoa" [(ngModel)]="targetaItem.creditos" />
           </div>
         </div>
 
@@ -47,7 +47,7 @@
             <label  class="col-sm-2 col-form-label">Activacion</label>
             <input type="date" placeholder="0.00" class="form-control" maxlength="15" name="fecha_Activacion" [(ngModel)]="targetaItem.fecha_Activacion" />
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-5" [hidden]="targetaItem.islimitado" >
             <label  class="col-sm-2 col-form-label">Vencimiento</label>
             <input type="date" placeholder="0.00" class="form-control" name="fecha_vencimiento" [(ngModel)]="targetaItem.fecha_vencimiento" />
           </div>
@@ -62,7 +62,12 @@
         <div class="form-group row">
           <label class="col-sm-2"></label>
           <div class="col-sm-10">
+            <div class="btn-group btn-group-full-width" role="group">
+            <button type="button" class="btn btn-primary btn-group-icon btn-group-divider btn-fixed" (click)="regresar()">
+              <i class="fa fa-arrow-left"></i>
+            </button>
             <button class="btn btn-primary" (click)="guardar()">{{id=='nuevo'?'Guardar':'Editar'}}</button>
+            </div>
           </div>
         </div>
 
@@ -72,3 +77,4 @@
 
   </div >
 </div>
+<toaster-container [toasterconfig]="config"></toaster-container>

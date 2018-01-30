@@ -18,9 +18,11 @@ export class MenuComponent implements OnInit {
    // this.menuService.navigateHome();
   }
 
+
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
     return false;
+
   }
 
 }

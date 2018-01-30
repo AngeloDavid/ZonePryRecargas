@@ -16,12 +16,12 @@ export class RecargasService {
     this.cabecera.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   }
 
-  newRecarga(Clii: Recargas) {
+  newRecarga(Clii: Recargas): any {
     const cuerpo = JSON.stringify(Clii);
     return this._http.post(this.urlServer + '/', cuerpo , { headers: this.cabecera });
   }
 
-  editRecargas(Clii: Recargas, id: string) {
+  editRecargas(Clii: Recargas, id: string): any{
     const cuerpo = JSON.stringify(Clii);
     console.log(cuerpo);
     return this._http.post(this.urlServer + '/' + id, cuerpo );
@@ -42,6 +42,16 @@ export class RecargasService {
     console.log(datos);
     return this._http.post(this.urlServer + '/' + id, datos );
 
+  }
+
+  codificar(numero: string,limiti: number): string {
+    let dato: string = numero + '';
+    let leng: number = limiti - dato.length;
+    dato = '';
+    for(let i = 0 ; i < leng;i++){
+      dato += '0';
+    }
+    return dato+=numero;
   }
 
 }

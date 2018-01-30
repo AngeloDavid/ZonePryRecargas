@@ -1,6 +1,7 @@
 import {Tarjetas} from  './Tarjetas';
 import {Promocion} from  './Promocion';
 export interface Recargas {
+  id?: string,
   abono: number;
   total?: number;
   saldo?: number;
@@ -8,4 +9,5 @@ export interface Recargas {
   observaciones?: string;
   tarjetaFk?: Tarjetas;
   promocionFk?: Promocion;
+  createdAt?:any;
 }

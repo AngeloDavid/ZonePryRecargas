@@ -4,6 +4,7 @@ import {Tarjetas} from '../../../interfaces/tarjetas';
 import {ClienteService} from '../../../services/cliente.service';
 import {TargetaService} from '../../../services/targeta.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
 @Component({
   selector: 'app-new-tarj',
   templateUrl: './new-tarj.component.html',
@@ -11,12 +12,25 @@ import {Router, ActivatedRoute} from '@angular/router';
 })
 export class NewTarjComponent implements OnInit {
 
+  config: ToasterConfig  = new ToasterConfig({
+    showCloseButton: true,
+    animation: 'flyRight',
+    preventDuplicates :true,
+    tapToDismiss: false,
+    newestOnTop: false,
+    positionClass: 'toast-top-right',
+    timeout : 10000,
+    limit : 5
+  });
+
+  hoy = new  Date();
   id = '';
   targetaItem: Tarjetas = {
     description: '',
     saldo: 2,
     creditos: 3,
-    fecha_Activacion: new  Date(),
+    // yyyy-MM-dd
+    fecha_Activacion: this.revisarFecha(this.hoy) ,
     tipo: 'normal',
     islimitado: true,
     estado: true ,
@@ -29,7 +43,8 @@ export class NewTarjComponent implements OnInit {
     private maqser: ClienteService,
     private targser: TargetaService,
     private _router: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute ,
+    private toasterService: ToasterService
   ) {
     this._activatedRoute.params.subscribe(
       parametros => {
@@ -55,21 +70,30 @@ export class NewTarjComponent implements OnInit {
   }
 
   guardar(): void {
+  console.log(this.targetaItem.saldo);
+    if (this.targetaItem.islimitado == false && this.targetaItem.fecha_vencimiento == undefined) {
+      this.popToast('warning', 'Error!! en registro de la tarjeta', 'Si la Tarjeta no tiene limite de saldo se debe selecionar una fecha de vencimiento');
+    }else
+    if (this.targetaItem.description == '' && this.targetaItem.userFk ==  null || ( (this.targetaItem.saldo <= 0 ||  this.targetaItem.saldo == null) ) ){
+      this.popToast('error', 'Error!! en registro de la tarjeta', 'IDCard, saldo o usario vacios');
+    } else
     if (this.id == 'nuevo') {
       this.targser.newTarjetas(this.targetaItem).subscribe(
         resp => {
           console.log(resp);
-           alert('Nueva Tarjeta ingresada Correctamente');
+          this.popToast('success', 'Registro Exitoso!!! ', 'Nueva Tarjeta ingresada Correctamente');
         } ,
-        error =>{
-          alert('Error!! Verifique que la información ingresada sea correcta');
+        error => {
+          this.popToast('error', 'Error!! en registro de la tarjeta', 'Problema al conectarse con el servidor Principal');
         }
       );
     } else {
       this.targser.editTarjetas(this.targetaItem, this.targetaItem.id + '' ).subscribe(
-          resp => {alert('Informacion de la tarjeta actulizada');},
+          resp => {
+            this.popToast('success', 'Actualización Exitosa!!', 'Informacion de la tarjeta actulizada corectamente');
+            },
           error =>{
-            alert('Error!! Verefique que la informacion ingresada sea correcta');
+            this.popToast('error', 'Error!!  En Actualizacion de Cliente ' , ' Problema al conectarse con el servidor Principal');
           });
     }
 
@@ -79,5 +103,25 @@ export class NewTarjComponent implements OnInit {
     this.targetaItem.description = this.targetaItem.userFk.cedula ;
   }
 
+  revisarFecha(fecha:any) {
+    console.log(fecha);
+    console.log(fecha.getDay());
+    let mes = (fecha.getMonth() + 1 ) < 10 ? '0' + (fecha.getMonth() + 1 ) : (fecha.getMonth() + 1 );
+    let dia = fecha.getDate() < 10 ? '0' + fecha.getDate() : fecha.getDate();
+    return (fecha.getFullYear() + '-' + mes + '-' + dia);
+  }
 
+  popToast(tipo: string, titulo: string, cuerpo: string) {
+    const toast: Toast = {
+      type: tipo,
+      title: titulo,
+      body: cuerpo ,
+      bodyOutputType: BodyOutputType.TrustedHtml,
+    };
+    this.toasterService.popAsync(toast);
+  }
+
+  regresar() {
+    this._router.navigate(['/tarjetas']);
+  }
 }

@@ -64,6 +64,7 @@ export const menu: NbMenuItem [] = [
     children: [
       {
         title: 'Mensual',
+        link: 'Ventas'
       }
     ]
   },

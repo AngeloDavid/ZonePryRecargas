@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import {Router} from '@angular/router';
 import {TargetaService} from '../../../services/targeta.service';
+
+
 @Component({
   selector: 'app-list-tarj',
   templateUrl: './list-tarj.component.html',
   styleUrls: ['./list-tarj.component.css']
 })
 export class ListTarjComponent implements OnInit {
+
+
 
   settings = {
     add: {
@@ -56,9 +60,9 @@ export class ListTarjComponent implements OnInit {
         title: 'Estado'
       },
       userFk: {
-        title: 'Usuario'
-
-      }
+        title: 'Usuario',
+        type: 'html',
+      } ,
     }
   };
 
@@ -75,8 +79,7 @@ export class ListTarjComponent implements OnInit {
   };
   datos:any;
 
-  constructor(private maqser: TargetaService,
-              private _router: Router) {
+  constructor(private maqser: TargetaService, private  _router: Router   ) {
     this.getAllTarjetas();
   }
 
@@ -107,7 +110,9 @@ export class ListTarjComponent implements OnInit {
         this.datos = resultado;
         //seteando valor usrFK
         for (let i in resultado) {
-          this.datos[i]['userFk']= resultado[i]['userFk']['nombre']+ " " + resultado[i]['userFk']['apellido'];
+
+          console.log(resultado[i]['userFk']['id']);
+          this.datos[i]['userFk'] =  resultado[i]['userFk']['nombre']+ " " + resultado[i]['userFk']['apellido'];
 
           if(this.datos[i]['estado'] === true)
                this.datos[i]['estado'] = "Activo";
@@ -124,7 +129,6 @@ export class ListTarjComponent implements OnInit {
       }
     );
   }
-
 }
 
 

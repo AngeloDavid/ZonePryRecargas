@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NbEmailPassAuthProvider, NbAuthModule } from '@nebular/auth';
+import {ToasterModule, ToasterService} from 'angular2-toaster';
 import {
   NbActionsModule,
   NbCardModule,
@@ -29,7 +31,7 @@ import {PromocionService} from './services/promocion.service';
 import {RecargasService} from './services/recargas.service';
 
 import {APP_ROUTING} from './app.router';
-import { ListCliComponent } from './page/cliente/list-cli/list-cli.component';
+import { ListCliComponent} from './page/cliente/list-cli/list-cli.component';
 import { NewCliComponent } from './page/cliente/new-cli/new-cli.component';
 import { ListMaqComponent } from './page/maquina/list-maq/list-maq.component';
 import { NewMaqComponent } from './page/maquina/new-maq/new-maq.component';
@@ -43,7 +45,9 @@ import { HorariosComponent } from './page/promociones/horarios/horarios.componen
 import { NewTarjComponent } from './page/tarjetas/new-tarj/new-tarj.component';
 import { ListTarjComponent } from './page/tarjetas/list-tarj/list-tarj.component';
 import { LoginComponent } from './page/login/login.component';
-
+import { BotonRefComponent } from './component/boton-ref/boton-ref.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { VentasComponent } from './page/reportes/ventas/ventas.component';
 
 
 
@@ -77,9 +81,14 @@ const NB_MODULES = [
     HorariosComponent,
     NewTarjComponent,
     ListTarjComponent,
-    LoginComponent
+    LoginComponent,
+    BotonRefComponent,
+    VentasComponent
   ],
   imports: [
+    NgxChartsModule,
+    BrowserAnimationsModule,
+    ToasterModule,
     HttpClientModule,
     FormsModule,
     Ng2SmartTableModule,
@@ -115,13 +124,13 @@ const NB_MODULES = [
                   endpoint: '/auth/reset-pass',
                   method: 'post',
                 },
-             
              },
            },
          },
          forms: {},
-       }), 
+       }),
   ],
+  entryComponents: [BotonRefComponent],
   providers: [NbSidebarModule.forRoot().providers, NbMenuModule.forRoot().providers, MaquinaService, ClienteService, HorarioService, TargetaService, PromocionService, RecargasService],
   bootstrap: [AppComponent ]
 })

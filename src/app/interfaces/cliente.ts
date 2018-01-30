@@ -11,4 +11,5 @@ export interface Cliente {
   FanPageId?: number;
   estado: boolean;
   tarjetas?: Tarjetas [];
+  createdAt?:any;
 }

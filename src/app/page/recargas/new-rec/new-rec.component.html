@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="print-section">
   <div class="col-lg-6 col-md-9">
     <nb-card>
       <nb-card-header><i class="fa fa-pencil-square-o"></i> Consumo</nb-card-header>
@@ -55,6 +55,7 @@
       </nb-card-body>
       <nb-card-footer>
         <button class="btn btn-primary" [disabled]="disabledGuardar" (click)="Guardar()" >Recargar</button>
+        <button class="btn btn-info" [disabled]="disabledImprinir" (click)="print()" title="Imprimir Recibo"><i class="fa fa-print" aria-hidden="true"></i></button>
       </nb-card-footer>
     </nb-card>
 
@@ -98,4 +99,6 @@
       </nb-card-body>
     </nb-card>
     </div>
+  <toaster-container [toasterconfig]="config"></toaster-container>
 </div>
+
