@@ -113,14 +113,12 @@ export class ListRecComponent implements OnInit {
                  this.datos[i]['hora'] = fecha.toLocaleTimeString();
                  this.datos[i]['createdAt'] = fecha.toLocaleDateString();
                }
-               this.Totales[0].value +=   resultado[i]['abono'];
-               this.Totales[1].value += resultado[i]['saldo'];
              }
              console.log(this.Totales);
              this.souces = new LocalDataSource(this.datos);
              this.souces.setFilter([ { field: 'createdAt', search: formatYMDFecha(this.searchDate).toLocaleDateString() } ]);
              this.souces.setSort([ { field: 'id', direction: 'desc'  } ]);
-
+             this.ImprimitTotales();
            }
          );
   }
@@ -141,17 +139,19 @@ export class ListRecComponent implements OnInit {
       {field: 'createdAt',
         search: fecha.toLocaleDateString() }
     ]);
+    this.ImprimitTotales();
+  }
+  ImprimitTotales()
+  {
     this.Totales[0].value = 0;
-    this.Totales[1].value = 0; //filteredAndSorted
-    console.log(this.souces);
+    this.Totales[1].value = 0;
+
     this.souces.getFilteredAndSorted().then( resp =>{
       for (const fsDatos of resp ) {
         this.Totales[0].value += fsDatos.abono;
         this.Totales[1].value += fsDatos.saldo;
       }
     });
-
-
   }
   onPrint(event): any {
 
